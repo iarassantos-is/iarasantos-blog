@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { localizePath } from '../i18n/utils';
+import { getPostsByCategory } from '../utils/posts';
+
+const locale = 'en' as const;
+const posts = await getPostsByCategory(locale, 'curated');
+---
+
+<BaseLayout
+  locale={locale}
+  title="Curated"
+  description="A running list of studios, projects, and ideas worth your attention. Curated by Iara Santos."
+>
+  <section class="curated container">
+    <header class="curated-header">
+      <p class="eyebrow" data-anim>Curated</p>
+      <h1 class="display curated-title" data-anim>
+        A reading list, <em>kept current.</em>
+      </h1>
+      <p class="curated-intro">
+        Studios, projects, and pieces of writing I keep returning to.
+        Brief notes on why each one matters.
+      </p>
+    </header>
+
+    <div class="curated-list">
+      {posts.length === 0 ? (
+        <p class="empty">A first selection arrives shortly.</p>
+      ) : (
+        posts.map((post) => (
+          <PostCard
+            locale={locale}
+            href={localizePath(`/blog/${post.slug}`, locale)}
+            title={post.data.title}
+            subtitle={post.data.subtitle}
+            category={post.data.category}
+            date={post.data.publishDate}
+            readingTime={post.data.readingTime}
+            cover={post.data.cover}
+            coverAlt={post.data.coverAlt}
+          />
+        ))
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .curated { padding: 5rem 0 4rem; }
+  .curated-header {
+    max-width: 50rem;
+    margin: 0 auto 4rem;
+  }
+  .curated-header .eyebrow { margin-bottom: 1.5rem; }
+  .curated-title { margin: 0 0 1.5rem; line-height: 1; }
+  .curated-intro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 36rem;
+  }
+  .empty {
+    text-align: center;
+    padding: 4rem 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+</style>

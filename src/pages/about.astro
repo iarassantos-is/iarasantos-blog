@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n/ui';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="About"
+  description="Iara Santos is an interior designer specializing in lighting design and project management, with a focus on residential and commercial work."
+>
+  <section class="about container">
+    <header class="about-header">
+      <p class="eyebrow" data-anim>About</p>
+      <h1 class="display about-title" data-anim>
+        A practice rooted in <em>material attention</em> and considered light.
+      </h1>
+    </header>
+
+    <div class="about-body prose-container">
+      <p class="lede">
+        I'm Iara Santos — an architect from São Paulo, building a practice in
+        interior design with lighting and project management as integral disciplines.
+      </p>
+
+      <p>
+        My training is in architecture, my specialization in lighting design, and
+        my method shaped by years of running complex projects on schedule and on budget.
+        I believe the best interiors come from a single mind keeping all three threads
+        pulled tight: the spatial idea, the material truth, and the lighting that lets
+        both register.
+      </p>
+
+      <p>
+        I work in residential at the high end and in commercial projects where
+        atmosphere matters as much as program. I write here as a way of thinking out loud
+        — about projects of my own, about work I admire, and about the unglamorous craft
+        of getting beautiful things actually built.
+      </p>
+
+      <h2>Background</h2>
+
+      <p>
+        Architecture (Brazil). Specialized training in lighting design.
+        Built and currently maintain ISSA Project, a project management application
+        designed specifically for interior and lighting workflows.
+      </p>
+
+      <h2>Currently</h2>
+
+      <p>
+        Working remotely with clients across the Americas. Open to senior interior
+        designer and lighting design roles with US-based studios — fully remote, with
+        occasional travel.
+      </p>
+
+      <h2>Selected expertise</h2>
+
+      <ul>
+        <li>Residential, high-end (full design and documentation)</li>
+        <li>Workplace and corporate interiors (mid-sized to enterprise floors)</li>
+        <li>Layered architectural lighting (specification, controls, and color tuning)</li>
+        <li>Project management for design teams (RFP through punch list)</li>
+      </ul>
+
+      <div class="about-actions">
+        <a href="/cv-iara-santos.pdf" class="btn-ghost" download>
+          {t(locale, 'about.cv')} →
+        </a>
+        <a href="/contact" class="btn-ghost">
+          Get in touch →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about { padding: 5rem 0 4rem; }
+  .about-header {
+    max-width: 50rem;
+    margin: 0 auto 4rem;
+  }
+  .about-header .eyebrow { margin-bottom: 1.5rem; }
+  .about-title {
+    margin: 0;
+    line-height: 1;
+  }
+
+  .lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 2rem;
+  }
+
+  .about-body p:first-of-type::first-letter {
+    /* override drop cap só do prose normal — aqui já temos um lede */
+    float: none;
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  .about-actions {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

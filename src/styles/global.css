@@ -1,0 +1,247 @@
+/* ============================================================
+   IARA SANTOS — Editorial Warm
+   Design tokens & global styles
+   ============================================================ */
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/cormorant-garamond-variable.woff2') format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/inter-variable.woff2') format('woff2-variations');
+}
+
+:root {
+  /* ----- Color palette: Editorial Warm ----- */
+  --ink:        #1A1815;   /* primary text, headers */
+  --ink-soft:   #3A3530;   /* secondary text */
+  --ink-muted:  #6B6258;   /* captions, meta */
+  --bone:       #F5F2ED;   /* page background */
+  --bone-warm:  #EFEAE0;   /* cards, hover states */
+  --sand:       #D4C5B0;   /* dividers, soft accents */
+  --bronze:     #8B7355;   /* links, primary accent */
+  --bronze-deep:#6B5840;   /* link hover */
+  --terracotta: #7B3F2F;   /* rare emphasis */
+  --olive:      #4A5240;   /* category tag accent */
+  --rule:       rgba(26, 24, 21, 0.12);
+  --rule-soft:  rgba(26, 24, 21, 0.06);
+
+  /* ----- Typography ----- */
+  --font-serif:    'Cormorant Garamond', 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-sans:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --fs-display:    clamp(2.5rem, 5vw + 0.5rem, 4.25rem);
+  --fs-h1:         clamp(2rem, 3.5vw + 0.5rem, 3.25rem);
+  --fs-h2:         clamp(1.5rem, 2vw + 0.5rem, 2.125rem);
+  --fs-h3:         clamp(1.2rem, 1.2vw + 0.5rem, 1.5rem);
+  --fs-body:       1.0625rem;
+  --fs-small:      0.875rem;
+  --fs-meta:       0.75rem;
+
+  --lh-tight:      1.1;
+  --lh-snug:       1.3;
+  --lh-body:       1.65;
+  --lh-loose:      1.8;
+
+  --tracking-wide: 0.18em;
+  --tracking-mid:  0.06em;
+
+  /* ----- Layout ----- */
+  --max-prose:     38rem;       /* ~640px — leitura confortável */
+  --max-content:   72rem;       /* ~1152px — grid maior */
+  --gutter:        clamp(1.25rem, 4vw, 3rem);
+
+  /* ----- Motion ----- */
+  --ease-editorial: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* ----- Reset minimalista ----- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--ink);
+  background: var(--bone);
+  font-feature-settings: "kern", "liga", "calt";
+}
+img, svg, video { max-width: 100%; height: auto; display: block; }
+button { font: inherit; cursor: pointer; }
+a { color: var(--bronze); text-decoration: none; transition: color 0.2s var(--ease-editorial); }
+a:hover { color: var(--bronze-deep); }
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+
+/* ----- Display headings (serif) ----- */
+.display, h1.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+.display em, h1.display em {
+  font-style: italic;
+  color: var(--terracotta);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: var(--lh-snug);
+  margin: 0 0 1rem;
+}
+h1 { font-size: var(--fs-h1); letter-spacing: -0.005em; }
+h2 { font-size: var(--fs-h2); margin-top: 2.5rem; }
+h3 { font-size: var(--fs-h3); margin-top: 2rem; }
+
+p { margin: 0 0 1.25rem; }
+
+/* ----- Editorial labels (small caps via tracking) ----- */
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--bronze);
+}
+.meta {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  letter-spacing: var(--tracking-mid);
+  color: var(--ink-muted);
+  text-transform: uppercase;
+}
+
+/* ----- Containers ----- */
+.container {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.prose-container {
+  width: 100%;
+  max-width: var(--max-prose);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ----- Buttons / pill links ----- */
+.pill {
+  display: inline-block;
+  font-size: var(--fs-meta);
+  letter-spacing: var(--tracking-mid);
+  text-transform: lowercase;
+  color: var(--ink-soft);
+  padding: 5px 12px;
+  border: 1px solid var(--bronze);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s var(--ease-editorial), color 0.2s var(--ease-editorial);
+}
+.pill:hover {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-small);
+  letter-spacing: var(--tracking-mid);
+  color: var(--ink);
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--ink);
+  background: transparent;
+  border-radius: 0;
+  text-decoration: none;
+  transition: all 0.25s var(--ease-editorial);
+}
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--bone);
+}
+
+/* ----- Prose content (post body) ----- */
+.prose {
+  font-size: var(--fs-body);
+  line-height: var(--lh-loose);
+  color: var(--ink-soft);
+}
+.prose h2, .prose h3 { color: var(--ink); }
+.prose p:first-of-type::first-letter {
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  font-weight: 400;
+  float: left;
+  line-height: 0.9;
+  margin: 0.5rem 0.5rem 0 0;
+  color: var(--terracotta);
+}
+.prose blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 2.5rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--bronze);
+}
+.prose img {
+  margin: 2.5rem 0 1rem;
+}
+.prose figcaption {
+  font-family: var(--font-sans);
+  font-size: var(--fs-small);
+  color: var(--ink-muted);
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin: 0 0 1.5rem;
+}
+.prose li { margin-bottom: 0.5rem; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--bone-warm);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+.prose hr {
+  margin: 3rem auto;
+  width: 4rem;
+  border-top: 1px solid var(--bronze);
+}
+
+/* ----- Selection ----- */
+::selection { background: var(--bronze); color: var(--bone); }
+
+/* ----- Subtle entrance animation ----- */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-up {
+    animation: fadeUp 0.7s var(--ease-editorial) both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}

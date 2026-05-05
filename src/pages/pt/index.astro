@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import Search from '../../components/Search.astro';
+import { localizePath } from '../../i18n/utils';
+import { getPostsByLocale, buildSearchString } from '../../utils/posts';
+
+const locale = 'pt' as const;
+const posts = await getPostsByLocale(locale);
+const [hero, ...rest] = posts;
+---
+
+<BaseLayout
+  locale={locale}
+  title="IARA SANTOS"
+  description="Designer de interiores especializada em iluminação e gestão de projetos. Apontamentos sobre projetos residenciais e comerciais, com intenção."
+>
+  <section class="masthead container">
+    <p class="eyebrow" data-anim>Caderno de prática</p>
+    <h1 class="display masthead-title" data-anim>
+      Interiores e luz, <em>com intenção.</em>
+    </h1>
+    <p class="masthead-lede" data-anim>
+      Apontamentos de um ofício que trata interiores e iluminação como uma só disciplina.
+      Estudos de projeto, pensamento sobre materiais e o trabalho pouco glamouroso de fazer as coisas direito.
+    </p>
+  </section>
+
+  <section class="container posts-section">
+    <Search locale={locale} />
+
+    {posts.length === 0 ? (
+      <p class="empty">Os primeiros estudos chegam em breve.</p>
+    ) : (
+      <>
+        {hero && (
+          <div data-searchable data-search-text={buildSearchString(hero)}>
+            <PostCard
+              locale={locale}
+              href={localizePath(`/blog/${hero.slug}`, locale)}
+              title={hero.data.title}
+              subtitle={hero.data.subtitle}
+              category={hero.data.category}
+              date={hero.data.publishDate}
+              readingTime={hero.data.readingTime}
+              cover={hero.data.cover}
+              coverAlt={hero.data.coverAlt}
+              variant="hero"
+            />
+          </div>
+        )}
+
+        <div class="posts-grid">
+          {rest.map((post) => (
+            <div data-searchable data-search-text={buildSearchString(post)}>
+              <PostCard
+                locale={locale}
+                href={localizePath(`/blog/${post.slug}`, locale)}
+                title={post.data.title}
+                subtitle={post.data.subtitle}
+                category={post.data.category}
+                date={post.data.publishDate}
+                readingTime={post.data.readingTime}
+                cover={post.data.cover}
+                coverAlt={post.data.coverAlt}
+              />
+            </div>
+          ))}
+        </div>
+      </>
+    )}
+  </section>
+</BaseLayout>
+
+<style>
+  .masthead {
+    padding: 5rem 0 3.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead .eyebrow { margin-bottom: 1.5rem; }
+  .masthead-title {
+    max-width: 18ch;
+    margin-bottom: 2rem;
+    line-height: 1;
+  }
+  .masthead-lede {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 1.2vw + 0.7rem, 1.4rem);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 38rem;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .posts-section { padding: 4rem 0 2rem; }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .empty {
+    text-align: center;
+    padding: 4rem 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPostsByLocale, getPostsByTag } from '../../utils/posts';
+import { localizePath } from '../../i18n/utils';
+
+export async function getStaticPaths() {
+  const posts = await getPostsByLocale('en');
+  const tagSet = new Set<string>();
+  posts.forEach((p) => p.data.tags.forEach((t) => tagSet.add(t)));
+  return Array.from(tagSet).map((tag) => ({ params: { tag } }));
+}
+
+const { tag } = Astro.params;
+const locale = 'en' as const;
+const posts = await getPostsByTag(locale, tag!);
+---
+
+<BaseLayout
+  locale={locale}
+  title={`#${tag}`}
+  description={`All writing tagged #${tag} on IARA SANTOS.`}
+>
+  <section class="tag-page container">
+    <header class="tag-header">
+      <p class="eyebrow" data-anim>Tag</p>
+      <h1 class="display tag-title" data-anim>#{tag}</h1>
+      <p class="tag-meta">
+        {posts.length} {posts.length === 1 ? 'piece' : 'pieces'} of writing
+      </p>
+    </header>
+
+    <div class="tag-list">
+      {posts.map((post) => (
+        <PostCard
+          locale={locale}
+          href={localizePath(`/blog/${post.slug}`, locale)}
+          title={post.data.title}
+          subtitle={post.data.subtitle}
+          category={post.data.category}
+          date={post.data.publishDate}
+          readingTime={post.data.readingTime}
+          cover={post.data.cover}
+          coverAlt={post.data.coverAlt}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tag-page { padding: 5rem 0 4rem; }
+  .tag-header {
+    max-width: 50rem;
+    margin: 0 auto 4rem;
+  }
+  .tag-header .eyebrow { margin-bottom: 1.5rem; }
+  .tag-title { margin: 0 0 1rem; font-family: var(--font-mono); font-size: clamp(1.8rem, 3vw, 2.5rem); letter-spacing: -0.01em; }
+  .tag-meta { color: var(--ink-muted); margin: 0; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; }
+</style>

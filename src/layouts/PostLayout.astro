@@ -1,0 +1,130 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/ui';
+import { formatDate, localizePath } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  subtitle?: string;
+  description: string;
+  category: 'project-showcase' | 'critical-eye' | 'method-notes' | 'material-studies' | 'curated';
+  publishDate: Date;
+  readingTime: number;
+  tags: string[];
+  cover?: string;
+  coverAlt?: string;
+}
+
+const { locale, title, subtitle, description, category, publishDate, readingTime, tags, cover, coverAlt } = Astro.props;
+const catKey = `cat.${category}` as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title={title}
+  description={description}
+  ogImage={cover}
+>
+  <article class="post">
+    <!-- Hero -->
+    <header class="post-hero container">
+      <div class="post-hero-meta">
+        <span class="eyebrow">{t(locale, catKey)}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span class="meta">{formatDate(publishDate, locale)}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span class="meta">{readingTime} {t(locale, 'post.minRead')}</span>
+      </div>
+      <h1 class="display post-title">{title}</h1>
+      {subtitle && <p class="post-subtitle">{subtitle}</p>}
+      <p class="post-byline">{t(locale, 'post.byline')}</p>
+    </header>
+
+    {cover && (
+      <figure class="post-cover container">
+        <img src={cover} alt={coverAlt ?? ''} />
+      </figure>
+    )}
+
+    <div class="prose-container prose">
+      <slot />
+    </div>
+
+    <!-- Tags -->
+    {tags && tags.length > 0 && (
+      <div class="prose-container post-tags">
+        <p class="eyebrow">{t(locale, 'post.tags')}</p>
+        <ul>
+          {tags.map((tag) => (
+            <li>
+              <a href={localizePath(`/tags/${tag}`, locale)} class="pill">#{tag}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .post { padding: 4rem 0 5rem; }
+
+  .post-hero {
+    text-align: left;
+    max-width: 50rem;
+    margin: 0 auto 2.5rem;
+  }
+  .post-hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .dot { color: var(--sand); font-size: 0.7rem; }
+
+  .post-title {
+    margin: 0 0 1.25rem;
+  }
+  .post-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 1vw + 0.8rem, 1.5rem);
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin: 0 0 2rem;
+    max-width: 36rem;
+  }
+  .post-byline {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .post-cover {
+    margin: 0 auto 3.5rem;
+    max-width: 60rem;
+  }
+  .post-cover img {
+    width: 100%;
+    height: auto;
+  }
+
+  .post-tags {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .post-tags ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>

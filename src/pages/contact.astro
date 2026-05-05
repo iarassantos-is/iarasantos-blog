@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n/ui';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="Contact"
+  description="Get in touch with Iara Santos for project inquiries, collaborations, or correspondence."
+>
+  <section class="contact container">
+    <header class="contact-header">
+      <p class="eyebrow" data-anim>{t(locale, 'contact.title')}</p>
+      <h1 class="display contact-title" data-anim>
+        Tell me about <em>the project.</em>
+      </h1>
+      <p class="contact-intro">{t(locale, 'contact.intro')}</p>
+    </header>
+
+    <div class="contact-grid">
+      <!--
+        Form posts to Formspree (free tier, 50 submissions/month).
+        Replace the action URL with your own form ID after creating an account at formspree.io
+      -->
+      <form
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+        class="contact-form"
+      >
+        <label>
+          <span>Your name</span>
+          <input type="text" name="name" required />
+        </label>
+
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+
+        <label>
+          <span>Project type (optional)</span>
+          <select name="project-type">
+            <option value="">Select…</option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial / Workplace</option>
+            <option value="hospitality">Hospitality</option>
+            <option value="lighting-only">Lighting design only</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Tell me about it</span>
+          <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <button type="submit" class="btn-ghost">Send →</button>
+      </form>
+
+      <aside class="contact-aside">
+        <div>
+          <p class="eyebrow">{t(locale, 'contact.email')}</p>
+          <p><a href="mailto:hello@iarasantos.com">hello@iarasantos.com</a></p>
+        </div>
+        <div>
+          <p class="eyebrow">{t(locale, 'contact.linkedin')}</p>
+          <p><a href="https://www.linkedin.com/" target="_blank" rel="noopener">/in/iarasantos</a></p>
+        </div>
+        <div>
+          <p class="eyebrow">{t(locale, 'contact.instagram')}</p>
+          <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">@iarasantos.studio</a></p>
+        </div>
+        <div>
+          <p class="eyebrow">Studio</p>
+          <p>São Paulo, Brazil</p>
+          <p class="muted">Working remotely across the Americas</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact { padding: 5rem 0 4rem; }
+  .contact-header {
+    max-width: 50rem;
+    margin: 0 auto 4rem;
+  }
+  .contact-header .eyebrow { margin-bottom: 1.5rem; }
+  .contact-title {
+    margin: 0 0 1.5rem;
+    line-height: 1;
+  }
+  .contact-intro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 36rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  @media (min-width: 800px) {
+    .contact-grid { grid-template-columns: 1.5fr 1fr; gap: 5rem; }
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .contact-form span {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    font: inherit;
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    color: var(--ink);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 0.5rem 0;
+    outline: none;
+    border-radius: 0;
+    transition: border-color 0.2s var(--ease-editorial);
+  }
+  .contact-form textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus,
+  .contact-form select:focus {
+    border-bottom-color: var(--bronze);
+  }
+  .contact-form button { align-self: flex-start; margin-top: 1rem; }
+
+  .contact-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .contact-aside p { margin: 0; line-height: 1.6; }
+  .contact-aside p.muted { color: var(--ink-muted); font-size: 0.9rem; }
+  .contact-aside .eyebrow { margin-bottom: 0.4rem; }
+</style>

@@ -1,0 +1,113 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { locale, title, description, ogImage = '/images/og-default.jpg' } = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const fullTitle = title === 'IARA SANTOS' ? title : `${title} — IARA SANTOS`;
+
+function stripPt(path: string): string {
+  return path.startsWith('/pt') ? path.slice(3) || '/' : path;
+}
+const cleanPath = stripPt(Astro.url.pathname);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="IARA SANTOS" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site).toString()} />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'pt_BR'} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+
+    <!-- hreflang alternates -->
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${cleanPath}`} />
+    <link rel="alternate" hreflang="pt-BR" href={`${siteUrl}/pt${cleanPath === '/' ? '' : cleanPath}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${cleanPath}`} />
+
+    <!-- Google Fonts (entregue por CDN; pode self-host depois) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- RSS discovery -->
+    <link rel="alternate" type="application/rss+xml" title="Iara Santos — RSS" href="/rss.xml" />
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Header locale={locale} currentPath={Astro.url.pathname} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer locale={locale} />
+
+    <script>
+      // Pequena animação de entrada para elementos com [data-anim]
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) {
+                e.target.classList.add('fade-up');
+                obs.unobserve(e.target);
+              }
+            });
+          },
+          { rootMargin: '0px 0px -10% 0px' }
+        );
+        document.querySelectorAll('[data-anim]').forEach((el) => obs.observe(el));
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+  }
+  .skip-link:focus {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: var(--ink);
+    color: var(--bone);
+    padding: 0.5rem 1rem;
+    z-index: 100;
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+
+// ⚠️ TROCAR pelo seu username Buttondown quando criar a conta
+// (instruções no SETUP.md)
+const buttondownUsername = 'iarasantos';
+---
+
+<div class="newsletter">
+  <p class="eyebrow">{t(locale, 'newsletter.title')}</p>
+  <p class="newsletter-body">{t(locale, 'newsletter.body')}</p>
+
+  <form
+    action={`https://buttondown.email/api/emails/embed-subscribe/${buttondownUsername}`}
+    method="post"
+    target="popupwindow"
+    onsubmit={`window.open('https://buttondown.email/${buttondownUsername}', 'popupwindow')`}
+    class="newsletter-form"
+  >
+    <input
+      type="email"
+      name="email"
+      placeholder={t(locale, 'newsletter.placeholder')}
+      required
+      aria-label={t(locale, 'newsletter.placeholder')}
+    />
+    <button type="submit">{t(locale, 'newsletter.cta')}</button>
+  </form>
+</div>
+
+<style>
+  .newsletter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .eyebrow {
+    margin: 0;
+  }
+  .newsletter-body {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    margin: 0 0 0.5rem;
+  }
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--ink);
+    align-items: stretch;
+  }
+  .newsletter-form input {
+    flex: 1;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 0.6rem 0;
+    color: var(--ink);
+    outline: none;
+  }
+  .newsletter-form input::placeholder { color: var(--ink-muted); }
+  .newsletter-form button {
+    background: transparent;
+    border: 0;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding: 0 0 0 1rem;
+    cursor: pointer;
+  }
+  .newsletter-form button:hover { color: var(--bronze); }
+</style>

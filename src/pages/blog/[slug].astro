@@ -1,0 +1,88 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { getPostsByLocale, getRelatedPosts } from '../../utils/posts';
+import { localizePath } from '../../i18n/utils';
+import { t } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  const posts = await getPostsByLocale('en');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, allPosts: posts },
+  }));
+}
+
+const { post, allPosts } = Astro.props;
+const { Content } = await post.render();
+const related = getRelatedPosts(post, allPosts, 2);
+const locale = 'en' as const;
+---
+
+<PostLayout
+  locale={locale}
+  title={post.data.title}
+  subtitle={post.data.subtitle}
+  description={post.data.description}
+  category={post.data.category}
+  publishDate={post.data.publishDate}
+  readingTime={post.data.readingTime}
+  tags={post.data.tags}
+  cover={post.data.cover}
+  coverAlt={post.data.coverAlt}
+>
+  <Content />
+
+  {related.length > 0 && (
+    <section class="related container">
+      <p class="eyebrow">{t(locale, 'post.related')}</p>
+      <ul class="related-list">
+        {related.map((rel) => (
+          <li>
+            <a href={localizePath(`/blog/${rel.slug}`, locale)}>
+              <span class="rel-cat eyebrow">{t(locale, `cat.${rel.data.category}`)}</span>
+              <span class="rel-title">{rel.data.title}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+</PostLayout>
+
+<style>
+  .related {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--rule);
+    max-width: 60rem;
+  }
+  .related .eyebrow { margin-bottom: 2rem; }
+  .related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 700px) {
+    .related-list { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  }
+  .related-list a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--bronze);
+    transition: color 0.2s var(--ease-editorial);
+  }
+  .related-list a:hover { color: var(--bronze); }
+  .rel-cat { color: var(--ink-muted); }
+  .rel-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    line-height: 1.2;
+  }
+</style>

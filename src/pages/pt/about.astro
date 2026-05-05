@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t } from '../../i18n/ui';
+
+const locale = 'pt' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="Sobre"
+  description="Iara Santos é designer de interiores com especialização em iluminação e gestão de projetos, com foco em projetos residenciais e comerciais."
+>
+  <section class="about container">
+    <header class="about-header">
+      <p class="eyebrow" data-anim>Sobre</p>
+      <h1 class="display about-title" data-anim>
+        Um ofício enraizado em <em>atenção ao material</em> e luz pensada.
+      </h1>
+    </header>
+
+    <div class="about-body prose-container">
+      <p class="lede">
+        Sou Iara Santos — arquiteta paulistana, construindo uma prática de design
+        de interiores com iluminação e gestão de projetos como disciplinas integradas.
+      </p>
+
+      <p>
+        Formação em arquitetura, especialização em lighting design, método forjado em
+        anos coordenando projetos complexos no prazo e dentro do orçamento. Acredito que
+        os melhores interiores vêm de uma única cabeça mantendo os três fios esticados:
+        a ideia espacial, a verdade do material e a luz que faz os dois aparecerem.
+      </p>
+
+      <p>
+        Trabalho em residencial alto padrão e em projetos comerciais onde a atmosfera
+        importa tanto quanto o programa. Escrevo aqui como forma de pensar em voz alta —
+        sobre projetos meus, sobre trabalhos que admiro e sobre o ofício pouco
+        glamouroso de fazer as coisas bonitas saírem do papel.
+      </p>
+
+      <h2>Formação</h2>
+
+      <p>
+        Arquitetura (Brasil). Formação especializada em lighting design.
+        Idealizei e mantenho o ISSA Project, aplicação de gestão de projetos
+        desenhada especificamente para fluxos de interiores e iluminação.
+      </p>
+
+      <h2>Atualmente</h2>
+
+      <p>
+        Atuando remotamente com clientes em toda as Américas. Aberta a posições
+        sênior em design de interiores e lighting design em estúdios nos EUA —
+        100% remoto, com viagens pontuais.
+      </p>
+
+      <h2>Áreas selecionadas</h2>
+
+      <ul>
+        <li>Residencial alto padrão (concepção a documentação)</li>
+        <li>Interiores corporativos (de andares médios a enterprise)</li>
+        <li>Iluminação arquitetônica em camadas (especificação, controle, ajuste de cor)</li>
+        <li>Gestão de projetos para equipes de design (do briefing à entrega)</li>
+      </ul>
+
+      <div class="about-actions">
+        <a href="/cv-iara-santos.pdf" class="btn-ghost" download>
+          {t(locale, 'about.cv')} →
+        </a>
+        <a href="/pt/contact" class="btn-ghost">
+          Entrar em contato →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about { padding: 5rem 0 4rem; }
+  .about-header {
+    max-width: 50rem;
+    margin: 0 auto 4rem;
+  }
+  .about-header .eyebrow { margin-bottom: 1.5rem; }
+  .about-title {
+    margin: 0;
+    line-height: 1;
+  }
+
+  .lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 2rem;
+  }
+
+  .about-body p:first-of-type::first-letter {
+    float: none;
+    font-size: inherit;
+    color: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  .about-actions {
+    margin-top: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

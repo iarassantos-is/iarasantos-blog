@@ -1,0 +1,90 @@
+---
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<div class="search-bar">
+  <label class="search-label" for="post-search">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+      <circle cx="7" cy="7" r="5"></circle>
+      <path d="M11 11l3.5 3.5"></path>
+    </svg>
+    <input
+      id="post-search"
+      type="search"
+      placeholder={t(locale, 'search.placeholder')}
+      autocomplete="off"
+    />
+  </label>
+  <p class="search-empty" id="search-empty" hidden>{t(locale, 'search.empty')}</p>
+</div>
+
+<style>
+  .search-bar {
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .search-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--ink-muted);
+  }
+  .search-label svg { flex-shrink: 0; }
+  .search-label input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    font: inherit;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.0625rem;
+    color: var(--ink);
+    padding: 0.5rem 0;
+    outline: none;
+  }
+  .search-label input::placeholder {
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+  .search-empty {
+    margin: 1.5rem 0 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+</style>
+
+<script>
+  const input = document.getElementById('post-search') as HTMLInputElement | null;
+  const empty = document.getElementById('search-empty') as HTMLElement | null;
+
+  if (input) {
+    input.addEventListener('input', () => {
+      const q = input.value.trim().toLowerCase();
+      const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-searchable]'));
+      let visible = 0;
+
+      cards.forEach((card) => {
+        if (!q) {
+          card.style.display = '';
+          visible++;
+          return;
+        }
+        const haystack = (card.dataset.searchText ?? '').toLowerCase();
+        const match = haystack.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+
+      if (empty) empty.hidden = visible !== 0;
+    });
+  }
+</script>

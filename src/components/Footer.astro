@@ -1,0 +1,105 @@
+---
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/ui';
+import Newsletter from './Newsletter.astro';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="brand-block">
+      <p class="footer-name">IARA SANTOS</p>
+      <p class="footer-tagline">{t(locale, 'footer.tagline')}</p>
+      <p class="footer-based">{t(locale, 'footer.based')}</p>
+    </div>
+
+    <Newsletter locale={locale} />
+
+    <div class="social">
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        LinkedIn
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        Instagram
+      </a>
+      <a href="/rss.xml" aria-label="RSS feed">RSS</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>{t(locale, 'footer.copy')}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    background: var(--bone);
+    padding: 4rem 0 1.5rem;
+    margin-top: 6rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (min-width: 800px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1.2fr 0.8fr;
+      gap: 4rem;
+    }
+  }
+  .brand-block { display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-name {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .footer-tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    margin: 0;
+  }
+  .footer-based {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .social a {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .social a:hover { color: var(--bronze); }
+
+  .footer-bottom {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  .footer-bottom p {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+</style>

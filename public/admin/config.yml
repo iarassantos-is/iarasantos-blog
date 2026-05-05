@@ -1,0 +1,144 @@
+# =============================================================================
+# IARA SANTOS — Decap CMS configuration
+#
+# Este arquivo define a interface visual de edição em /admin
+# Documentação: https://decapcms.org/docs/
+# =============================================================================
+
+backend:
+  name: github
+  # ⚠️ Você troca essas duas linhas no GitHub depois (ver SETUP.md):
+  repo: iarassantos-is/iarasantos-blog
+  branch: main
+  base_url: https://api.netlify.com   # OAuth via Netlify (gratuito, só pra autenticação)
+  auth_endpoint: auth
+
+# pasta onde imagens do CMS são salvas
+media_folder: public/images/posts
+public_folder: /images/posts
+
+# salvar posts como rascunho antes de publicar
+publish_mode: editorial_workflow
+
+# personalização visual mínima do painel
+locale: 'en'
+site_url: https://iarasantos.com
+display_url: https://iarasantos.com
+logo_url: https://iarasantos.com/favicon.svg
+
+collections:
+  # ======================================================================
+  # POSTS EM INGLÊS
+  # ======================================================================
+  - name: 'posts-en'
+    label: 'Writing — English'
+    label_singular: 'Post (EN)'
+    folder: 'src/content/posts-en'
+    create: true
+    slug: '{{slug}}'
+    extension: 'md'
+    format: 'frontmatter'
+    summary: '{{title}}  —  {{category}}  ·  {{publishDate | date("YYYY-MM-DD")}}'
+    sortable_fields: ['publishDate', 'title', 'category']
+    view_filters:
+      - label: 'Project showcase'
+        field: 'category'
+        pattern: 'project-showcase'
+      - label: 'Critical eye'
+        field: 'category'
+        pattern: 'critical-eye'
+      - label: 'Method notes'
+        field: 'category'
+        pattern: 'method-notes'
+      - label: 'Material studies'
+        field: 'category'
+        pattern: 'material-studies'
+      - label: 'Curated'
+        field: 'category'
+        pattern: 'curated'
+      - label: 'Drafts only'
+        field: 'draft'
+        pattern: true
+    fields:
+      - { name: 'title',        label: 'Title',         widget: 'string' }
+      - { name: 'subtitle',     label: 'Subtitle / deck', widget: 'string', required: false }
+      - { name: 'description',  label: 'Meta description (150–160 chars)', widget: 'text' }
+      - name: 'category'
+        label: 'Category'
+        widget: 'select'
+        options:
+          - { label: 'Project showcase', value: 'project-showcase' }
+          - { label: 'Critical eye',     value: 'critical-eye' }
+          - { label: 'Method notes',     value: 'method-notes' }
+          - { label: 'Material studies', value: 'material-studies' }
+          - { label: 'Curated',          value: 'curated' }
+      - { name: 'publishDate',  label: 'Publish date',  widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - { name: 'readingTime',  label: 'Reading time (minutes)', widget: 'number', value_type: 'int', min: 1, max: 60, default: 5 }
+      - name: 'tags'
+        label: 'Tags'
+        widget: 'list'
+        default: []
+        hint: 'Examples: residential, lighting-design, materiality, project-management'
+      - { name: 'cover',        label: 'Cover image',    widget: 'image', required: false }
+      - { name: 'coverAlt',     label: 'Cover image alt text', widget: 'string', required: false }
+      - { name: 'translationSlug', label: 'Slug of the PT version (optional)', widget: 'string', required: false, hint: 'For language toggle on this post' }
+      - { name: 'draft',        label: 'Draft (do not publish)', widget: 'boolean', default: true }
+      - { name: 'body',         label: 'Body',           widget: 'markdown' }
+
+  # ======================================================================
+  # POSTS EM PORTUGUÊS
+  # ======================================================================
+  - name: 'posts-pt'
+    label: 'Publicações — Português'
+    label_singular: 'Publicação (PT)'
+    folder: 'src/content/posts-pt'
+    create: true
+    slug: '{{slug}}'
+    extension: 'md'
+    format: 'frontmatter'
+    summary: '{{title}}  —  {{category}}  ·  {{publishDate | date("YYYY-MM-DD")}}'
+    sortable_fields: ['publishDate', 'title', 'category']
+    view_filters:
+      - label: 'Projeto'
+        field: 'category'
+        pattern: 'project-showcase'
+      - label: 'Olhar crítico'
+        field: 'category'
+        pattern: 'critical-eye'
+      - label: 'Método'
+        field: 'category'
+        pattern: 'method-notes'
+      - label: 'Estudos de material'
+        field: 'category'
+        pattern: 'material-studies'
+      - label: 'Curadoria'
+        field: 'category'
+        pattern: 'curated'
+      - label: 'Apenas rascunhos'
+        field: 'draft'
+        pattern: true
+    fields:
+      - { name: 'title',        label: 'Título',         widget: 'string' }
+      - { name: 'subtitle',     label: 'Subtítulo',      widget: 'string', required: false }
+      - { name: 'description',  label: 'Meta descrição (150–160 caracteres)', widget: 'text' }
+      - name: 'category'
+        label: 'Categoria'
+        widget: 'select'
+        options:
+          - { label: 'Projeto',           value: 'project-showcase' }
+          - { label: 'Olhar crítico',     value: 'critical-eye' }
+          - { label: 'Método',            value: 'method-notes' }
+          - { label: 'Estudos de material', value: 'material-studies' }
+          - { label: 'Curadoria',         value: 'curated' }
+      - { name: 'publishDate',  label: 'Data de publicação', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - { name: 'readingTime',  label: 'Tempo de leitura (minutos)', widget: 'number', value_type: 'int', min: 1, max: 60, default: 5 }
+      - name: 'tags'
+        label: 'Tags'
+        widget: 'list'
+        default: []
+        hint: 'Exemplos: residencial, lighting-design, materialidade, gestao-de-projetos'
+      - { name: 'cover',        label: 'Imagem de capa',  widget: 'image', required: false }
+      - { name: 'coverAlt',     label: 'Texto alternativo da capa', widget: 'string', required: false }
+      - { name: 'translationSlug', label: 'Slug da versão em inglês (opcional)', widget: 'string', required: false, hint: 'Para o toggle de idioma neste post' }
+      - { name: 'draft',        label: 'Rascunho (não publicar)', widget: 'boolean', default: true }
+      - { name: 'body',         label: 'Corpo',           widget: 'markdown' }

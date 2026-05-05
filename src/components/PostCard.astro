@@ -1,0 +1,143 @@
+---
+import type { Locale } from '../i18n/ui';
+import { t } from '../i18n/ui';
+import { formatDate, localizePath } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  href: string;
+  title: string;
+  subtitle?: string;
+  category: 'project-showcase' | 'critical-eye' | 'method-notes' | 'material-studies' | 'curated';
+  date: Date;
+  readingTime: number;
+  cover?: string;
+  coverAlt?: string;
+  /** controle visual: hero (primeiro post da home) | standard (lista) */
+  variant?: 'hero' | 'standard';
+}
+
+const { locale, href, title, subtitle, category, date, readingTime, cover, coverAlt, variant = 'standard' } = Astro.props;
+
+const catKey = `cat.${category}` as const;
+---
+
+<article class:list={['post-card', variant]}>
+  <a href={href} class="card-link">
+    {cover && (
+      <div class="cover">
+        <img src={cover} alt={coverAlt ?? ''} loading="lazy" />
+      </div>
+    )}
+
+    <div class="card-body">
+      <div class="card-meta">
+        <span class="eyebrow">{t(locale, catKey)}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span class="meta">{formatDate(date, locale)}</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span class="meta">{readingTime} {t(locale, 'post.minRead')}</span>
+      </div>
+
+      <h2 class="card-title">{title}</h2>
+      {subtitle && <p class="card-subtitle">{subtitle}</p>}
+    </div>
+  </a>
+</article>
+
+<style>
+  .post-card {
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 0;
+  }
+  .post-card:first-child { padding-top: 0; }
+
+  .card-link {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  @media (min-width: 720px) {
+    .card-link {
+      grid-template-columns: 1fr 1.4fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+  }
+
+  /* HERO variant — first card on the home page */
+  .post-card.hero {
+    padding: 0 0 3.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .post-card.hero .card-link {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 720px) {
+    .post-card.hero .card-link {
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: end;
+    }
+  }
+  .post-card.hero .card-title {
+    font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+    line-height: 1.05;
+  }
+
+  .cover {
+    overflow: hidden;
+    background: var(--sand);
+    aspect-ratio: 4 / 3;
+  }
+  .post-card.hero .cover {
+    aspect-ratio: 5 / 4;
+  }
+  .cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-editorial);
+  }
+  .card-link:hover .cover img {
+    transform: scale(1.03);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .dot { color: var(--sand); font-size: 0.7rem; }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.4rem, 2vw + 0.4rem, 2rem);
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0;
+    transition: color 0.2s var(--ease-editorial);
+  }
+  .card-link:hover .card-title { color: var(--bronze); }
+
+  .card-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.0625rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+</style>
