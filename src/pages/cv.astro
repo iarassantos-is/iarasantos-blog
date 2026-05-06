@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const locale = 'en' as const;
+
+const cvs = [
+  {
+    role: 'Interior Designer',
+    eyebrow: '01',
+    body: 'Full project scope: space planning, FF&E specification, custom millwork, technical documentation in US standards.',
+    href: '/cv/iara-santos-interior-design.pdf',
+  },
+  {
+    role: 'Lighting Designer',
+    eyebrow: '02',
+    body: 'Photometric design, IES analysis, fixture specification, AutoCAD documentation. 6+ years, 250+ projects/year.',
+    href: '/cv/iara-santos-lighting-design.pdf',
+  },
+  {
+    role: 'Design Project Manager',
+    eyebrow: '03',
+    body: '6-person team lead, end-to-end project delivery, custom PM tooling. Async-first across time zones.',
+    href: '/cv/iara-santos-project-manager.pdf',
+  },
+];
+---
+
+<BaseLayout
+  locale={locale}
+  title="CV"
+  description="Three role-tailored CVs for Iara Santos: Interior Designer, Lighting Designer, and Design Project Manager."
+>
+  <section class="cv container">
+    <header class="cv-header">
+      <p class="eyebrow" data-anim>Curriculum vitae</p>
+      <h1 class="display cv-title" data-anim>
+        Choose the role <em>you're hiring for.</em>
+      </h1>
+      <p class="cv-intro">
+        Three tailored CVs for three overlapping disciplines.
+        Each one foregrounds the relevant experience while the others stay
+        in the background.
+      </p>
+    </header>
+
+    <div class="cv-grid">
+      {cvs.map((cv) => (
+        <a href={cv.href} download class="cv-card">
+          <span class="cv-num">{cv.eyebrow}</span>
+          <h2 class="cv-role">{cv.role}</h2>
+          <p class="cv-body">{cv.body}</p>
+          <span class="cv-cta">Download PDF ↓</span>
+        </a>
+      ))}
+    </div>
+
+    <p class="cv-note">
+      Need a different format or a tailored version? <a href="/contact">Get in touch</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .cv { padding: 5rem 0 4rem; }
+  .cv-header { max-width: 50rem; margin: 0 auto 4rem; }
+  .cv-header .eyebrow { margin-bottom: 1.5rem; }
+  .cv-title { margin: 0 0 1.5rem; line-height: 1; }
+  .cv-intro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 36rem;
+  }
+
+  .cv-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 800px) {
+    .cv-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  .cv-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2.5rem 2rem;
+    background: var(--bone-warm);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    min-height: 18rem;
+    transition: background 0.25s var(--ease-editorial), border-color 0.25s var(--ease-editorial), transform 0.25s var(--ease-editorial);
+  }
+  .cv-card:hover {
+    background: var(--ink);
+    color: var(--bone);
+    border-color: var(--ink);
+    transform: translateY(-3px);
+  }
+
+  .cv-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--bronze);
+  }
+  .cv-card:hover .cv-num { color: var(--sand); }
+
+  .cv-role {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 0;
+  }
+  .cv-card:hover .cv-role { color: var(--bone); }
+
+  .cv-body {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+    flex: 1;
+  }
+  .cv-card:hover .cv-body { color: var(--sand); }
+
+  .cv-cta {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding-top: 1rem;
+    border-top: 1px solid rgba(26, 24, 21, 0.15);
+  }
+  .cv-card:hover .cv-cta { color: var(--bone); border-top-color: rgba(245, 242, 237, 0.2); }
+
+  .cv-note {
+    margin-top: 4rem;
+    text-align: center;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+  .cv-note a { color: var(--bronze); }
+</style>

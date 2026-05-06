@@ -8,21 +8,21 @@ const locale = 'en' as const;
 <BaseLayout
   locale={locale}
   title="Contact"
-  description="Get in touch with Iara Santos for project inquiries, collaborations, or correspondence."
+  description="Get in touch with Iara Santos for new opportunities, project conversations, or correspondence."
 >
   <section class="contact container">
     <header class="contact-header">
       <p class="eyebrow" data-anim>{t(locale, 'contact.title')}</p>
       <h1 class="display contact-title" data-anim>
-        Tell me about <em>the project.</em>
+        Tell me <em>what you're building.</em>
       </h1>
       <p class="contact-intro">{t(locale, 'contact.intro')}</p>
     </header>
 
     <div class="contact-grid">
       <!--
-        Form posts to Formspree (free tier, 50 submissions/month).
-        Replace the action URL with your own form ID after creating an account at formspree.io
+        ⚠️ Replace YOUR_FORM_ID with your real Formspree form ID after creating
+        a free account at https://formspree.io. Free tier supports 50 submissions/month.
       -->
       <form
         action="https://formspree.io/f/YOUR_FORM_ID"
@@ -40,19 +40,25 @@ const locale = 'en' as const;
         </label>
 
         <label>
-          <span>Project type (optional)</span>
-          <select name="project-type">
+          <span>Company / studio (optional)</span>
+          <input type="text" name="company" />
+        </label>
+
+        <label>
+          <span>What's this about?</span>
+          <select name="subject" required>
             <option value="">Select…</option>
-            <option value="residential">Residential</option>
-            <option value="commercial">Commercial / Workplace</option>
-            <option value="hospitality">Hospitality</option>
+            <option value="job-opportunity">Job opportunity (full-time / contract)</option>
+            <option value="freelance-project">Freelance project</option>
             <option value="lighting-only">Lighting design only</option>
+            <option value="issa-project">ISSA Project (PM tool)</option>
+            <option value="press-collab">Press / collaboration</option>
             <option value="other">Other</option>
           </select>
         </label>
 
         <label>
-          <span>Tell me about it</span>
+          <span>Tell me more</span>
           <textarea name="message" rows="6" required></textarea>
         </label>
 
@@ -60,22 +66,51 @@ const locale = 'en' as const;
       </form>
 
       <aside class="contact-aside">
-        <div>
+        <div class="aside-block">
           <p class="eyebrow">{t(locale, 'contact.email')}</p>
-          <p><a href="mailto:hello@iarasantos.com">hello@iarasantos.com</a></p>
+          <p>
+            <a href="mailto:iarasantos.is@icloud.com">
+              iarasantos.is@icloud.com
+            </a>
+          </p>
         </div>
-        <div>
+
+        <div class="aside-block">
+          <p class="eyebrow">{t(locale, 'contact.whatsapp')}</p>
+          <p>
+            <a
+              href="https://wa.me/5531983999005"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              +55 31 98399-9005
+            </a>
+          </p>
+          <p class="aside-fineprint">
+            For initial outreach, email or LinkedIn preferred.
+          </p>
+        </div>
+
+        <div class="aside-block">
           <p class="eyebrow">{t(locale, 'contact.linkedin')}</p>
-          <p><a href="https://www.linkedin.com/" target="_blank" rel="noopener">/in/iarasantos</a></p>
+          <p>
+            <a
+              href="https://www.linkedin.com/in/arqiarassantos"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              /in/arqiarassantos
+            </a>
+          </p>
         </div>
-        <div>
-          <p class="eyebrow">{t(locale, 'contact.instagram')}</p>
-          <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">@iarasantos.studio</a></p>
-        </div>
-        <div>
-          <p class="eyebrow">Studio</p>
-          <p>São Paulo, Brazil</p>
-          <p class="muted">Working remotely across the Americas</p>
+
+        <div class="aside-block">
+          <p class="eyebrow">{t(locale, 'contact.location')}</p>
+          <p>Belo Horizonte, Brazil</p>
+          <p class="aside-fineprint">
+            GMT-3 · Available across US business hours.<br/>
+            Open to remote and relocation.
+          </p>
         </div>
       </aside>
     </div>
@@ -89,14 +124,11 @@ const locale = 'en' as const;
     margin: 0 auto 4rem;
   }
   .contact-header .eyebrow { margin-bottom: 1.5rem; }
-  .contact-title {
-    margin: 0 0 1.5rem;
-    line-height: 1;
-  }
+  .contact-title { margin: 0 0 1.5rem; line-height: 1; }
   .contact-intro {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--ink-soft);
     margin: 0;
     max-width: 36rem;
@@ -108,7 +140,10 @@ const locale = 'en' as const;
     gap: 4rem;
   }
   @media (min-width: 800px) {
-    .contact-grid { grid-template-columns: 1.5fr 1fr; gap: 5rem; }
+    .contact-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 5rem;
+    }
   }
 
   .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -154,7 +189,23 @@ const locale = 'en' as const;
     flex-direction: column;
     gap: 2rem;
   }
-  .contact-aside p { margin: 0; line-height: 1.6; }
-  .contact-aside p.muted { color: var(--ink-muted); font-size: 0.9rem; }
-  .contact-aside .eyebrow { margin-bottom: 0.4rem; }
+  .aside-block { display: flex; flex-direction: column; gap: 0.4rem; }
+  .aside-block .eyebrow { margin-bottom: 0.4rem; }
+  .aside-block p {
+    margin: 0;
+    line-height: 1.6;
+  }
+  .aside-block a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--bronze);
+    padding-bottom: 1px;
+  }
+  .aside-block a:hover { color: var(--bronze); }
+  .aside-fineprint {
+    font-size: 0.85rem !important;
+    color: var(--ink-muted) !important;
+    font-style: italic;
+    margin-top: 0.25rem !important;
+  }
 </style>

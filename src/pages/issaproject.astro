@@ -1,0 +1,401 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Esta página é intencionalmente bilíngue na mesma URL.
+// É uma landing de produto — o usuário pode trocar via toggle no header.
+// Como não está no menu, o conteúdo abaixo é em inglês (objetivo principal: mercado US).
+const locale = 'en' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="ISSA Project — Project management built for design studios"
+  description="ISSA Project is a project management application built specifically for interior, lighting, and architecture studios. Live with a 6-person team running 250+ projects/year."
+>
+  <!-- ============ HERO ============ -->
+  <section class="issa-hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow" data-anim>ISSA Project</p>
+        <h1 class="display hero-title" data-anim>
+          The project management tool <em>I built</em> because nothing else worked.
+        </h1>
+        <p class="hero-lede" data-anim>
+          A purpose-built application for interior, lighting, and architecture
+          studios. Live with my full design team — tracking 250+ active projects
+          per year from briefing to installation.
+        </p>
+        <div class="hero-actions">
+          <a href="#how-it-works" class="btn-ghost">See how it works ↓</a>
+          <a href="#contact" class="btn-ghost">Get a quote →</a>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img
+          src="/images/issa/iara-tablet.jpg"
+          alt="Iara Santos using ISSA Project"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ THE PROBLEM ============ -->
+  <section class="issa-section">
+    <div class="container narrow">
+      <p class="section-eyebrow">The problem</p>
+      <h2 class="section-title">
+        Design studios lose money to <em>operational fog</em>.
+      </h2>
+      <div class="prose-block">
+        <p>
+          The tools weren't built for us. Asana is too generic.
+          Trello can't show pipeline scale. Spreadsheets break the moment a
+          team grows beyond three. So design studios cobble together half-systems
+          across five apps — and lose visibility, deadlines, specifications,
+          and money in the gaps between them.
+        </p>
+        <p>
+          I watched it happen on my own team. So I designed a tool to fix it,
+          for the way design studios actually work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="issa-section bone-warm" id="how-it-works">
+    <div class="container">
+      <p class="section-eyebrow">How it works</p>
+      <h2 class="section-title">A single source of truth, <em>shaped to design.</em></h2>
+
+      <div class="features-grid">
+        <article class="feature">
+          <span class="feature-num">01</span>
+          <h3>Real-time project status, by phase</h3>
+          <p>
+            Briefing, concept, design development, documentation, installation.
+            Every project visible at a glance, with bottleneck flags, deadline
+            risk, and client-review status.
+          </p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-num">02</span>
+          <h3>Client &amp; team communication, tracked</h3>
+          <p>
+            Every approval, change request, and decision logged in one place
+            and tied to the project — not scattered across email threads,
+            WhatsApp, and meeting notes nobody can find.
+          </p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-num">03</span>
+          <h3>Sector-level metrics &amp; ROI</h3>
+          <p>
+            Performance dashboards by team member, project type, and segment.
+            See where your studio is profitable and where it's leaking time —
+            in numbers, not anecdotes.
+          </p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-num">04</span>
+          <h3>Automated handoff to the commercial team</h3>
+          <p>
+            When a design phase closes, specifications, BOMs, and approvals
+            flow automatically to whoever quotes, sources, or sells.
+            No re-keying, no missing fixtures, no &quot;wait, what was the brand on this?&quot;
+          </p>
+        </article>
+      </div>
+
+      <div class="placeholder">
+        <p class="placeholder-eyebrow">Screenshots &amp; demo video</p>
+        <p>
+          Live walkthrough and product imagery coming soon to this section.
+          In the meantime, request a personalized demo via the form below.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT SOLVES ============ -->
+  <section class="issa-section">
+    <div class="container narrow">
+      <p class="section-eyebrow">What it solves</p>
+      <h2 class="section-title">Built for studios that <em>refuse to scale into chaos.</em></h2>
+
+      <ul class="solves-list">
+        <li>
+          <strong>Architecture, interior, and lighting studios</strong> running
+          a portfolio of concurrent projects with multiple designers per project.
+        </li>
+        <li>
+          <strong>Studios with high-detail deliverables</strong> — millwork shop
+          drawings, fixture schedules, finish books — that get lost in generic
+          PM tools.
+        </li>
+        <li>
+          <strong>Studios scaling past 5 people</strong> where ad-hoc communication
+          starts to break and ownership becomes fuzzy.
+        </li>
+        <li>
+          <strong>Studios that bill by phase or milestone</strong> and need clean
+          handoffs between design, commercial, and execution.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CUSTOMIZATION ============ -->
+  <section class="issa-section bone-warm">
+    <div class="container narrow">
+      <p class="section-eyebrow">Customization &amp; onboarding</p>
+      <h2 class="section-title">Configured to your studio, <em>not the other way around.</em></h2>
+      <div class="prose-block">
+        <p>
+          ISSA Project is not a SaaS template you adapt to. It's configured
+          to match how your studio actually works — your phases, your
+          deliverables, your naming conventions, your client-review cadence,
+          your handoff to the commercial team.
+        </p>
+        <p>
+          Onboarding includes: structured discovery of your current workflow,
+          custom configuration, team training, and 30 days of launch support.
+          Pricing is per studio — not per seat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="issa-cta-section" id="contact">
+    <div class="container narrow">
+      <h2 class="cta-title">
+        Interested? <em>Let's talk.</em>
+      </h2>
+      <p class="cta-body">
+        Tell me about your studio, your team size, and where things break down today.
+        I'll come back with a personalized walkthrough and a quote within 48 hours.
+      </p>
+      <div class="cta-actions">
+        <a
+          href="/contact?subject=issa-project"
+          class="btn-ghost btn-large"
+        >
+          Request a quote →
+        </a>
+        <a
+          href="mailto:iarasantos.is@icloud.com?subject=ISSA%20Project%20%E2%80%94%20Quote%20request"
+          class="btn-ghost btn-large"
+        >
+          Email directly →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ============ HERO ============ */
+  .issa-hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 5rem; }
+  }
+  .hero-text .eyebrow { margin-bottom: 1.5rem; }
+  .hero-title {
+    margin: 0 0 2rem;
+    line-height: 1;
+  }
+  .hero-lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 32rem;
+    margin: 0 0 2.5rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .hero-photo {
+    margin: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ============ SECTIONS ============ */
+  .issa-section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .issa-section.bone-warm { background: var(--bone-warm); }
+  .narrow { max-width: 50rem; }
+
+  .section-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 1.5rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 3vw + 0.5rem, 3rem);
+    line-height: 1.05;
+    margin: 0 0 2.5rem;
+    max-width: 28ch;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .prose-block { max-width: 38rem; }
+  .prose-block p {
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  /* ============ FEATURES ============ */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+  @media (min-width: 700px) {
+    .features-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bronze);
+  }
+  .feature-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--bronze);
+  }
+  .feature h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+  .feature p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .placeholder {
+    background: var(--bone);
+    border: 1px dashed var(--bronze);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .placeholder-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 0.5rem;
+  }
+  .placeholder p:last-child {
+    color: var(--ink-muted);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ============ SOLVES LIST ============ */
+  .solves-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .solves-list li {
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--bronze);
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .solves-list strong { color: var(--ink); font-weight: 500; }
+
+  /* ============ CTA ============ */
+  .issa-cta-section {
+    padding: 6rem 0;
+    background: var(--ink);
+    color: var(--bone);
+  }
+  .cta-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 4vw + 0.5rem, 3.5rem);
+    line-height: 1.05;
+    color: var(--bone);
+    margin: 0 0 1.5rem;
+  }
+  .cta-title em { font-style: italic; color: var(--sand); }
+  .cta-body {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--sand);
+    margin: 0 0 2.5rem;
+    max-width: 36rem;
+    line-height: 1.5;
+  }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+  }
+  .issa-cta-section .btn-ghost {
+    color: var(--bone);
+    border-color: var(--bone);
+  }
+  .issa-cta-section .btn-ghost:hover {
+    background: var(--bone);
+    color: var(--ink);
+  }
+</style>

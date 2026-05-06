@@ -9,26 +9,27 @@ export type Locale = 'en' | 'pt';
 export const ui = {
   en: {
     // navigation
-    'nav.blog':     'Blog',
-    'nav.about':    'About',
-    'nav.curated':  'Curated',
-    'nav.contact':  'Contact',
-    'nav.toggle':   'PT',
+    'nav.blog':       'Blog',
+    'nav.portfolios': 'Portfolios',
+    'nav.about':      'About',
+    'nav.curated':    'Curated',
+    'nav.contact':    'Contact',
+    'nav.toggle':     'PT',
     'nav.toggleAria': 'Switch to Portuguese',
 
     // home
-    'home.tagline': 'Interiors and light, considered.',
-    'home.latest':  'Latest writing',
+    'home.tagline':  'Interiors and light, considered.',
+    'home.latest':   'Latest writing',
     'home.allPosts': 'All writing',
-    'home.viewAll': 'View all writing',
+    'home.viewAll':  'View all writing',
 
     // post / listing
-    'post.minRead': 'min read',
-    'post.related': 'Related writing',
-    'post.share':   'Share',
-    'post.byline':  'By Iara Santos',
-    'post.tags':    'Tags',
-    'post.category': 'Category',
+    'post.minRead':   'min read',
+    'post.related':   'Related writing',
+    'post.share':     'Share',
+    'post.byline':    'By Iara Santos',
+    'post.tags':      'Tags',
+    'post.category':  'Category',
     'post.published': 'Published',
 
     // categories
@@ -49,13 +50,16 @@ export const ui = {
     // about
     'about.title': 'About',
     'about.cv':    'Download CV',
+    'about.issaTeaser': 'Discover my project management app',
+    'about.issaCta':    'See ISSA Project →',
 
     // contact
-    'contact.title':  'Get in touch',
-    'contact.intro':  'For project inquiries, collaborations, or correspondence.',
-    'contact.email':  'Email',
-    'contact.linkedin': 'LinkedIn',
-    'contact.instagram': 'Instagram',
+    'contact.title':     'Get in touch',
+    'contact.intro':     'For new opportunities, project conversations, or correspondence.',
+    'contact.email':     'Email',
+    'contact.whatsapp':  'WhatsApp',
+    'contact.linkedin':  'LinkedIn',
+    'contact.location':  'Location',
 
     // search
     'search.placeholder': 'Search by topic, project, material…',
@@ -64,28 +68,29 @@ export const ui = {
     // footer
     'footer.copy':    '© 2026 Iara Santos. All rights reserved.',
     'footer.tagline': 'Interiors and light, considered.',
-    'footer.based':   'Based in São Paulo. Working with clients across the Americas.',
+    'footer.based':   'Based in Belo Horizonte, Brazil — open to remote and relocation. Available across US time zones.',
   },
 
   pt: {
-    'nav.blog':     'Blog',
-    'nav.about':    'Sobre',
-    'nav.curated':  'Curadoria',
-    'nav.contact':  'Contato',
-    'nav.toggle':   'EN',
+    'nav.blog':       'Blog',
+    'nav.portfolios': 'Portfólio',
+    'nav.about':      'Sobre',
+    'nav.curated':    'Curadoria',
+    'nav.contact':    'Contato',
+    'nav.toggle':     'EN',
     'nav.toggleAria': 'Trocar para inglês',
 
-    'home.tagline': 'Interiores e luz, com intenção.',
-    'home.latest':  'Publicações recentes',
+    'home.tagline':  'Interiores e luz, com intenção.',
+    'home.latest':   'Publicações recentes',
     'home.allPosts': 'Todas as publicações',
-    'home.viewAll': 'Ver todas',
+    'home.viewAll':  'Ver todas',
 
-    'post.minRead': 'min de leitura',
-    'post.related': 'Leituras relacionadas',
-    'post.share':   'Compartilhar',
-    'post.byline':  'Por Iara Santos',
-    'post.tags':    'Tags',
-    'post.category': 'Categoria',
+    'post.minRead':   'min de leitura',
+    'post.related':   'Leituras relacionadas',
+    'post.share':     'Compartilhar',
+    'post.byline':    'Por Iara Santos',
+    'post.tags':      'Tags',
+    'post.category':  'Categoria',
     'post.published': 'Publicado em',
 
     'cat.project-showcase':  'Projeto',
@@ -103,19 +108,22 @@ export const ui = {
 
     'about.title': 'Sobre',
     'about.cv':    'Baixar CV',
+    'about.issaTeaser': 'Conheça meu aplicativo de gestão de projetos',
+    'about.issaCta':    'Ver ISSA Project →',
 
-    'contact.title':  'Entre em contato',
-    'contact.intro':  'Para projetos, colaborações ou correspondência.',
-    'contact.email':  'E-mail',
-    'contact.linkedin': 'LinkedIn',
-    'contact.instagram': 'Instagram',
+    'contact.title':     'Entre em contato',
+    'contact.intro':     'Para novas oportunidades, conversas sobre projetos ou correspondência.',
+    'contact.email':     'E-mail',
+    'contact.whatsapp':  'WhatsApp',
+    'contact.linkedin':  'LinkedIn',
+    'contact.location':  'Localização',
 
     'search.placeholder': 'Buscar por tema, projeto, material…',
     'search.empty':       'Nenhuma publicação encontrada.',
 
     'footer.copy':    '© 2026 Iara Santos. Todos os direitos reservados.',
     'footer.tagline': 'Interiores e luz, com intenção.',
-    'footer.based':   'Baseada em São Paulo. Atendo clientes em toda as Américas.',
+    'footer.based':   'Baseada em Belo Horizonte, Brasil — aberta a oportunidades remotas e relocation. Disponível em fusos horários dos EUA.',
   },
 } as const;
 

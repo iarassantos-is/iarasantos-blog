@@ -8,13 +8,13 @@ const locale = 'pt' as const;
 <BaseLayout
   locale={locale}
   title="Contato"
-  description="Entre em contato com Iara Santos para projetos, colaborações ou correspondência."
+  description="Entre em contato com Iara Santos para novas oportunidades, conversas sobre projetos ou correspondência."
 >
   <section class="contact container">
     <header class="contact-header">
       <p class="eyebrow" data-anim>{t(locale, 'contact.title')}</p>
       <h1 class="display contact-title" data-anim>
-        Me conte sobre <em>o projeto.</em>
+        Me conte <em>o que você está construindo.</em>
       </h1>
       <p class="contact-intro">{t(locale, 'contact.intro')}</p>
     </header>
@@ -36,19 +36,25 @@ const locale = 'pt' as const;
         </label>
 
         <label>
-          <span>Tipo de projeto (opcional)</span>
-          <select name="project-type">
+          <span>Empresa / estúdio (opcional)</span>
+          <input type="text" name="company" />
+        </label>
+
+        <label>
+          <span>Sobre o que é?</span>
+          <select name="subject" required>
             <option value="">Selecione…</option>
-            <option value="residential">Residencial</option>
-            <option value="commercial">Comercial / Corporativo</option>
-            <option value="hospitality">Hospitality</option>
+            <option value="job-opportunity">Oportunidade de trabalho (CLT / contrato)</option>
+            <option value="freelance-project">Projeto freelance</option>
             <option value="lighting-only">Apenas iluminação</option>
+            <option value="issa-project">ISSA Project (ferramenta de gestão)</option>
+            <option value="press-collab">Imprensa / colaboração</option>
             <option value="other">Outro</option>
           </select>
         </label>
 
         <label>
-          <span>Me conte sobre ele</span>
+          <span>Me conte mais</span>
           <textarea name="message" rows="6" required></textarea>
         </label>
 
@@ -56,22 +62,51 @@ const locale = 'pt' as const;
       </form>
 
       <aside class="contact-aside">
-        <div>
+        <div class="aside-block">
           <p class="eyebrow">{t(locale, 'contact.email')}</p>
-          <p><a href="mailto:hello@iarasantos.com">hello@iarasantos.com</a></p>
+          <p>
+            <a href="mailto:iarasantos.is@icloud.com">
+              iarasantos.is@icloud.com
+            </a>
+          </p>
         </div>
-        <div>
+
+        <div class="aside-block">
+          <p class="eyebrow">{t(locale, 'contact.whatsapp')}</p>
+          <p>
+            <a
+              href="https://wa.me/5531983999005"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              +55 31 98399-9005
+            </a>
+          </p>
+          <p class="aside-fineprint">
+            Para primeiro contato, e-mail ou LinkedIn são preferidos.
+          </p>
+        </div>
+
+        <div class="aside-block">
           <p class="eyebrow">{t(locale, 'contact.linkedin')}</p>
-          <p><a href="https://www.linkedin.com/" target="_blank" rel="noopener">/in/iarasantos</a></p>
+          <p>
+            <a
+              href="https://www.linkedin.com/in/arqiarassantos"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              /in/arqiarassantos
+            </a>
+          </p>
         </div>
-        <div>
-          <p class="eyebrow">{t(locale, 'contact.instagram')}</p>
-          <p><a href="https://www.instagram.com/" target="_blank" rel="noopener">@iarasantos.studio</a></p>
-        </div>
-        <div>
-          <p class="eyebrow">Estúdio</p>
-          <p>São Paulo, Brasil</p>
-          <p class="muted">Atendendo remotamente nas Américas</p>
+
+        <div class="aside-block">
+          <p class="eyebrow">{t(locale, 'contact.location')}</p>
+          <p>Belo Horizonte, Brasil</p>
+          <p class="aside-fineprint">
+            GMT-3 · Disponível em fusos horários dos EUA.<br/>
+            Aberta a remoto e relocation.
+          </p>
         </div>
       </aside>
     </div>
@@ -80,19 +115,13 @@ const locale = 'pt' as const;
 
 <style>
   .contact { padding: 5rem 0 4rem; }
-  .contact-header {
-    max-width: 50rem;
-    margin: 0 auto 4rem;
-  }
+  .contact-header { max-width: 50rem; margin: 0 auto 4rem; }
   .contact-header .eyebrow { margin-bottom: 1.5rem; }
-  .contact-title {
-    margin: 0 0 1.5rem;
-    line-height: 1;
-  }
+  .contact-title { margin: 0 0 1.5rem; line-height: 1; }
   .contact-intro {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--ink-soft);
     margin: 0;
     max-width: 36rem;
@@ -104,7 +133,10 @@ const locale = 'pt' as const;
     gap: 4rem;
   }
   @media (min-width: 800px) {
-    .contact-grid { grid-template-columns: 1.5fr 1fr; gap: 5rem; }
+    .contact-grid {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 5rem;
+    }
   }
 
   .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -139,7 +171,20 @@ const locale = 'pt' as const;
   .contact-form button { align-self: flex-start; margin-top: 1rem; }
 
   .contact-aside { display: flex; flex-direction: column; gap: 2rem; }
-  .contact-aside p { margin: 0; line-height: 1.6; }
-  .contact-aside p.muted { color: var(--ink-muted); font-size: 0.9rem; }
-  .contact-aside .eyebrow { margin-bottom: 0.4rem; }
+  .aside-block { display: flex; flex-direction: column; gap: 0.4rem; }
+  .aside-block .eyebrow { margin-bottom: 0.4rem; }
+  .aside-block p { margin: 0; line-height: 1.6; }
+  .aside-block a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--bronze);
+    padding-bottom: 1px;
+  }
+  .aside-block a:hover { color: var(--bronze); }
+  .aside-fineprint {
+    font-size: 0.85rem !important;
+    color: var(--ink-muted) !important;
+    font-style: italic;
+    margin-top: 0.25rem !important;
+  }
 </style>

@@ -11,19 +11,18 @@ interface Props {
 const { locale, currentPath } = Astro.props;
 const other = otherLocale(locale);
 
-// para o toggle de idioma, mantemos o mesmo path no outro idioma
-// (o backend pode não ter tradução; nesse caso cai na home do outro idioma)
-const togglePath = localizePath(stripLocalePrefix(currentPath), other);
-
 function stripLocalePrefix(path: string): string {
   return path.startsWith('/pt') ? path.slice(3) || '/' : path;
 }
 
+const togglePath = localizePath(stripLocalePrefix(currentPath), other);
+
 const navItems = [
-  { key: 'nav.blog' as const,    href: localizePath('/', locale) },
-  { key: 'nav.about' as const,   href: localizePath('/about', locale) },
-  { key: 'nav.curated' as const, href: localizePath('/curated', locale) },
-  { key: 'nav.contact' as const, href: localizePath('/contact', locale) },
+  { key: 'nav.blog' as const,       href: localizePath('/', locale) },
+  { key: 'nav.portfolios' as const, href: localizePath('/portfolios', locale) },
+  { key: 'nav.about' as const,      href: localizePath('/about', locale) },
+  { key: 'nav.curated' as const,    href: localizePath('/curated', locale) },
+  { key: 'nav.contact' as const,    href: localizePath('/contact', locale) },
 ];
 ---
 
@@ -60,6 +59,22 @@ const navItems = [
       <span></span><span></span><span></span>
     </button>
   </div>
+
+  <!-- Mobile drawer -->
+  <nav class="mobile-nav" aria-label="Mobile">
+    <ul>
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} class="mobile-link">{t(locale, item.key)}</a>
+        </li>
+      ))}
+      <li class="mobile-lang">
+        <a href={togglePath}>
+          {locale.toUpperCase()} · {t(locale, 'nav.toggle').toLowerCase()}
+        </a>
+      </li>
+    </ul>
+  </nav>
 </header>
 
 <style>
@@ -100,12 +115,12 @@ const navItems = [
     margin-top: 4px;
     display: none;
   }
-  @media (min-width: 720px) {
+  @media (min-width: 900px) {
     .brand-tagline { display: block; }
   }
 
   .primary-nav { display: none; }
-  @media (min-width: 720px) {
+  @media (min-width: 800px) {
     .primary-nav { display: block; }
   }
   .primary-nav ul {
@@ -113,7 +128,7 @@ const navItems = [
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 2rem;
+    gap: 1.75rem;
     align-items: center;
   }
   .nav-link {
@@ -127,9 +142,7 @@ const navItems = [
     padding-bottom: 4px;
   }
   .nav-link:hover { color: var(--ink); }
-  .nav-link.active {
-    color: var(--ink);
-  }
+  .nav-link.active { color: var(--ink); }
   .nav-link.active::after {
     content: '';
     position: absolute;
@@ -145,7 +158,6 @@ const navItems = [
     color: var(--ink-muted);
     text-decoration: none;
     text-transform: uppercase;
-    transition: color 0.2s var(--ease-editorial);
   }
   .lang-toggle a:hover { color: var(--ink); }
   .lang-current { color: var(--ink); font-weight: 500; }
@@ -165,17 +177,56 @@ const navItems = [
     width: 22px;
     height: 1px;
     background: var(--ink);
+    transition: transform 0.25s var(--ease-editorial);
   }
-  @media (min-width: 720px) {
+  @media (min-width: 800px) {
     .menu-toggle { display: none; }
+  }
+
+  /* Mobile drawer */
+  .mobile-nav {
+    display: none;
+    border-top: 1px solid var(--rule);
+    padding: 1rem var(--gutter);
+  }
+  .mobile-nav.open { display: block; }
+  .mobile-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-nav li {
+    border-bottom: 1px solid var(--rule);
+  }
+  .mobile-nav li:last-child { border-bottom: 0; }
+  .mobile-link {
+    display: block;
+    padding: 1rem 0;
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .mobile-lang a {
+    display: block;
+    padding: 1rem 0;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
   }
 </style>
 
 <script>
   const toggle = document.getElementById('menu-toggle');
-  const nav = document.querySelector('.primary-nav');
+  const mobileNav = document.querySelector('.mobile-nav');
   toggle?.addEventListener('click', () => {
-    const open = nav?.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(!!open));
+    const isOpen = mobileNav?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!isOpen));
   });
 </script>

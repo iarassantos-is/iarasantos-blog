@@ -8,7 +8,7 @@ const locale = 'pt' as const;
 <BaseLayout
   locale={locale}
   title="Sobre"
-  description="Iara Santos é designer de interiores com especialização em iluminação e gestão de projetos, com foco em projetos residenciais e comerciais."
+  description="Iara Santos — arquiteta e designer de interiores com 6+ anos de experiência e prática paralela em iluminação e gestão de projetos."
 >
   <section class="about container">
     <header class="about-header">
@@ -18,59 +18,121 @@ const locale = 'pt' as const;
       </h1>
     </header>
 
-    <div class="about-body prose-container">
-      <p class="lede">
-        Sou Iara Santos — arquiteta paulistana, construindo uma prática de design
-        de interiores com iluminação e gestão de projetos como disciplinas integradas.
-      </p>
+    <div class="about-grid">
+      <!-- ============ MAIN COLUMN ============ -->
+      <div class="about-body">
+        <p class="lede">
+          Sou Iara Santos — arquiteta e designer de interiores baseada em
+          Belo Horizonte, com seis anos de experiência entregando projetos
+          residenciais e comerciais do conceito à execução, e prática paralela
+          em lighting design e gestão de projetos.
+        </p>
 
-      <p>
-        Formação em arquitetura, especialização em lighting design, método forjado em
-        anos coordenando projetos complexos no prazo e dentro do orçamento. Acredito que
-        os melhores interiores vêm de uma única cabeça mantendo os três fios esticados:
-        a ideia espacial, a verdade do material e a luz que faz os dois aparecerem.
-      </p>
+        <p>
+          Formação em arquitetura. Especialização em lighting design.
+          O método veio de anos coordenando projetos complexos no prazo e
+          dentro do orçamento — atualmente liderando uma equipe de seis pessoas
+          e supervisionando aproximadamente 250 projetos ativos por ano na
+          <strong>Everlight</strong>, uma das principais empresas de iluminação
+          do Brasil. Cofundei a <strong>SIS Arquitetura</strong> em 2019 e a
+          mantive até 2025, entregando mais de 150 projetos residenciais e de
+          interiores, do conceito à documentação final.
+        </p>
 
-      <p>
-        Trabalho em residencial alto padrão e em projetos comerciais onde a atmosfera
-        importa tanto quanto o programa. Escrevo aqui como forma de pensar em voz alta —
-        sobre projetos meus, sobre trabalhos que admiro e sobre o ofício pouco
-        glamouroso de fazer as coisas bonitas saírem do papel.
-      </p>
+        <p>
+          O que sempre me traz de volta ao mesmo ponto: os melhores ambientes
+          que já visitei são resultado de uma única cabeça mantendo três fios
+          esticados ao mesmo tempo — a ideia espacial, a verdade do material e
+          a luz que faz os dois aparecerem. Escrevo aqui para pensar em voz alta
+          sobre isso.
+        </p>
 
-      <h2>Formação</h2>
+        <h2>O que faço</h2>
 
-      <p>
-        Arquitetura (Brasil). Formação especializada em lighting design.
-        Idealizei e mantenho o ISSA Project, aplicação de gestão de projetos
-        desenhada especificamente para fluxos de interiores e iluminação.
-      </p>
+        <p>
+          Residencial alto padrão e projetos comerciais onde a atmosfera importa
+          tanto quanto o programa. Concepção até documentação técnica:
+          plantas humanizadas, especificação de FF&E, detalhamento de marcenaria
+          sob medida, plantas de teto refletido e integração de iluminação.
+          Produzo conjuntos de pranchas em padrão americano de construção
+          (sq ft, IES footcandle guidelines, ADA, IBC) e domino AutoCAD,
+          SketchUp + Enscape, Dialux Evo e SketchUp Layout. Revit em formação.
+        </p>
 
-      <h2>Atualmente</h2>
+        <h2>Como trabalho</h2>
 
-      <p>
-        Atuando remotamente com clientes em toda as Américas. Aberta a posições
-        sênior em design de interiores e lighting design em estúdios nos EUA —
-        100% remoto, com viagens pontuais.
-      </p>
+        <p>
+          Modo remoto desde 2019. Sou autodidata, focada em prazos e confortável
+          assumindo um projeto do briefing à entrega final sem precisar de
+          orientação constante. Comunico-me em inglês com clientes internacionais
+          e mantenho fluxos assíncronos compatíveis com diferentes fusos.
+        </p>
 
-      <h2>Áreas selecionadas</h2>
+        <p>
+          Há alguns anos cansei de ver bons projetos de design serem prejudicados
+          por má gestão. Então construí uma ferramenta para resolver isso —
+          o <strong>ISSA Project</strong>, um aplicativo de gestão desenhado
+          especificamente para equipes de design de interiores e iluminação.
+          Hoje está em uso na minha equipe completa na Everlight, acompanhando
+          do conceito à instalação em todo o pipeline de projetos.
+        </p>
 
-      <ul>
-        <li>Residencial alto padrão (concepção a documentação)</li>
-        <li>Interiores corporativos (de andares médios a enterprise)</li>
-        <li>Iluminação arquitetônica em camadas (especificação, controle, ajuste de cor)</li>
-        <li>Gestão de projetos para equipes de design (do briefing à entrega)</li>
-      </ul>
+        <h2>Atualmente</h2>
 
-      <div class="about-actions">
-        <a href="/cv-iara-santos.pdf" class="btn-ghost" download>
-          {t(locale, 'about.cv')} →
-        </a>
-        <a href="/pt/contact" class="btn-ghost">
-          Entrar em contato →
-        </a>
+        <p>
+          Atendendo remotamente clientes em toda as Américas. Aberta a posições
+          sênior em design de interiores, lighting design e design project
+          management em estúdios nos EUA — 100% remoto, com abertura para
+          relocation e patrocínio de visto para a oportunidade certa de longo prazo.
+        </p>
+
+        <h2>Áreas selecionadas</h2>
+
+        <ul>
+          <li>Residencial alto padrão — concepção e documentação completas</li>
+          <li>Interiores corporativos — de andares médios a enterprise</li>
+          <li>Iluminação arquitetônica em camadas — especificação, controle, ajuste de cor, cálculos fotométricos</li>
+          <li>Gestão de projetos para equipes de design — do briefing à entrega, modo assíncrono</li>
+        </ul>
+
+        <div class="about-actions">
+          <a href="/cv" class="btn-ghost">
+            {t(locale, 'about.cv')} →
+          </a>
+          <a href="/pt/portfolios" class="btn-ghost">
+            Ver portfólios →
+          </a>
+          <a href="/pt/contact" class="btn-ghost">
+            Entrar em contato →
+          </a>
+        </div>
       </div>
+
+      <!-- ============ SIDE COLUMN ============ -->
+      <aside class="about-aside">
+        <figure class="aside-photo">
+          <img
+            src="/images/about/iara-headshot.jpg"
+            alt="Iara Santos"
+            loading="eager"
+          />
+        </figure>
+
+        <div class="aside-id">
+          <p class="aside-name">Iara Santos</p>
+          <p class="aside-role">Interior Designer · Iluminação · Gestão de projetos</p>
+          <p class="aside-meta">
+            Belo Horizonte, BR<br/>
+            Aberta a remoto &amp; relocation<br/>
+            Fusos horários dos EUA
+          </p>
+        </div>
+
+        <a href="/issaproject" class="issa-card">
+          <p class="issa-eyebrow">{t(locale, 'about.issaTeaser')}</p>
+          <p class="issa-cta">{t(locale, 'about.issaCta')}</p>
+        </a>
+      </aside>
     </div>
   </section>
 </BaseLayout>
@@ -78,30 +140,59 @@ const locale = 'pt' as const;
 <style>
   .about { padding: 5rem 0 4rem; }
   .about-header {
-    max-width: 50rem;
+    max-width: 60rem;
     margin: 0 auto 4rem;
   }
   .about-header .eyebrow { margin-bottom: 1.5rem; }
-  .about-title {
-    margin: 0;
-    line-height: 1;
+  .about-title { margin: 0; line-height: 1; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 70rem;
+    margin: 0 auto;
   }
+  @media (min-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1.6fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+  }
+
+  .about-body { max-width: 38rem; }
+  .about-body h2 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+  .about-body p {
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .about-body strong { color: var(--ink); font-weight: 500; }
 
   .lede {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    color: var(--ink);
-    margin: 0 0 2rem;
+    font-size: 1.4rem !important;
+    line-height: 1.5 !important;
+    color: var(--ink) !important;
+    margin: 0 0 2rem !important;
   }
 
-  .about-body p:first-of-type::first-letter {
-    float: none;
-    font-size: inherit;
-    color: inherit;
-    line-height: inherit;
-    margin: 0;
+  .about-body ul {
+    padding-left: 1.25rem;
+    margin: 0 0 2rem;
+  }
+  .about-body li {
+    margin-bottom: 0.6rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
   }
 
   .about-actions {
@@ -109,5 +200,87 @@ const locale = 'pt' as const;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .about-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 6rem;
+  }
+  @media (max-width: 899px) {
+    .about-aside { position: static; }
+  }
+
+  .aside-photo {
+    margin: 0;
+    overflow: hidden;
+    background: var(--sand);
+    aspect-ratio: 3 / 4;
+  }
+  .aside-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .aside-id {
+    padding: 1rem 0 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .aside-name {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0 0 0.25rem;
+    letter-spacing: 0.04em;
+  }
+  .aside-role {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    color: var(--bronze);
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+  }
+  .aside-meta {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0 0 1rem;
+  }
+
+  .issa-card {
+    display: block;
+    padding: 1.5rem;
+    background: var(--bone-warm);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    transition: background 0.25s var(--ease-editorial), border-color 0.25s var(--ease-editorial);
+  }
+  .issa-card:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .issa-card:hover .issa-eyebrow,
+  .issa-card:hover .issa-cta {
+    color: var(--bone);
+  }
+  .issa-eyebrow {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    margin: 0 0 0.75rem;
+    transition: color 0.25s var(--ease-editorial);
+  }
+  .issa-cta {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0;
+    transition: color 0.25s var(--ease-editorial);
   }
 </style>

@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const locale = 'en' as const;
+
+const portfolios = [
+  {
+    label: 'Interior Design',
+    eyebrow: 'Residential & high-end',
+    description:
+      '150+ residential projects from concept through technical documentation. Selected studies in space planning, materiality, custom millwork, and FF&E specification — produced to US construction standards.',
+    href: 'https://canva.link/ialt2d6txlz9cq1',
+    accent: 'warm',
+  },
+  {
+    label: 'Lighting Design',
+    eyebrow: 'Architectural & corporate',
+    description:
+      'Selected work across residential, healthcare, and corporate sectors. Photometric calculations in Dialux Evo, full IES analysis, and AutoCAD documentation aligned with IES footcandle guidelines and CIE/ISO 8995.',
+    href: 'https://canva.link/8072h9gwt7uoxbl',
+    accent: 'cool',
+  },
+];
+---
+
+<BaseLayout
+  locale={locale}
+  title="Portfolios"
+  description="Selected work by Iara Santos — interior design and lighting design. Residential, commercial, and healthcare projects produced to US standards."
+>
+  <section class="portfolios container">
+    <header class="portfolios-header">
+      <p class="eyebrow" data-anim>Portfolios</p>
+      <h1 class="display portfolios-title" data-anim>
+        Selected work, <em>by discipline.</em>
+      </h1>
+      <p class="portfolios-intro">
+        Two parallel practices, kept distinct on purpose. Choose the body of work
+        most relevant to what you're considering.
+      </p>
+    </header>
+
+    <div class="portfolios-grid">
+      {portfolios.map((p, i) => (
+        <a
+          href={p.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class:list={['portfolio-card', `accent-${p.accent}`]}
+          style={`--card-index: ${i}`}
+          data-anim
+        >
+          <div class="card-eyebrow">
+            <span class="num">0{i + 1}</span>
+            <span>{p.eyebrow}</span>
+          </div>
+          <h2 class="card-title">{p.label}</h2>
+          <p class="card-desc">{p.description}</p>
+          <span class="card-cta">
+            View portfolio
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+              <path d="M3 11L11 3M11 3H5M11 3V9"></path>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+
+    <p class="portfolios-note">
+      A Project Management portfolio is in progress and will be added here
+      shortly. In the meantime, project management methodology is described
+      throughout the lighting portfolio's <em>Project Management at Scale</em>
+      section, and on my <a href="/about">About page</a>.
+    </p>
+  </section>
+</BaseLayout>
+
+<style>
+  .portfolios { padding: 5rem 0 4rem; }
+  .portfolios-header {
+    max-width: 50rem;
+    margin: 0 auto 4rem;
+  }
+  .portfolios-header .eyebrow { margin-bottom: 1.5rem; }
+  .portfolios-title { margin: 0 0 1.5rem; line-height: 1; }
+  .portfolios-intro {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 36rem;
+  }
+
+  .portfolios-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  @media (min-width: 800px) {
+    .portfolios-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .portfolio-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 3rem 2.5rem;
+    background: var(--bone-warm);
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    color: inherit;
+    min-height: 24rem;
+    transition: background 0.3s var(--ease-editorial), transform 0.3s var(--ease-editorial), border-color 0.3s var(--ease-editorial);
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-card.accent-warm {
+    background: linear-gradient(160deg, #EFEAE0 0%, #E0D4BC 100%);
+  }
+  .portfolio-card.accent-cool {
+    background: linear-gradient(160deg, #F5F2ED 0%, #DDD5C7 100%);
+  }
+  .portfolio-card:hover {
+    background: var(--ink);
+    color: var(--bone);
+    border-color: var(--ink);
+    transform: translateY(-4px);
+  }
+
+  .card-eyebrow {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+  }
+  .portfolio-card:hover .card-eyebrow { color: var(--sand); }
+  .card-eyebrow .num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .portfolio-card:hover .card-eyebrow .num { color: var(--bone); }
+
+  .card-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 3vw + 0.5rem, 2.75rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin: 0;
+    flex: 1;
+  }
+  .portfolio-card:hover .card-title { color: var(--bone); }
+
+  .card-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .portfolio-card:hover .card-desc { color: var(--sand); }
+
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(26, 24, 21, 0.15);
+  }
+  .portfolio-card:hover .card-cta { color: var(--bone); border-top-color: rgba(245, 242, 237, 0.2); }
+
+  .portfolios-note {
+    margin-top: 4rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--ink-muted);
+    font-size: 1rem;
+    text-align: center;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .portfolios-note a { color: var(--bronze); }
+  .portfolios-note a:hover { color: var(--ink); }
+</style>
