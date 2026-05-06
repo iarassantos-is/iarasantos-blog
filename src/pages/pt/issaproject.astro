@@ -1,0 +1,404 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Versão portuguesa da landing page do ISSA Project.
+// Acessível em /pt/issaproject — não aparece no menu, só pelo card da About.
+const locale = 'pt' as const;
+---
+
+<BaseLayout
+  locale={locale}
+  title="ISSA Project — Gestão de projetos pensada para estúdios de design"
+  description="O ISSA Project é um aplicativo de gestão construído especificamente para estúdios de interiores, iluminação e arquitetura. Em uso por uma equipe de 6 pessoas com mais de 250 projetos por ano."
+>
+  <!-- ============ HERO ============ -->
+  <section class="issa-hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow" data-anim>ISSA Project</p>
+        <h1 class="display hero-title" data-anim>
+          A ferramenta de gestão <em>que eu construí</em> porque nada mais funcionava.
+        </h1>
+        <p class="hero-lede" data-anim>
+          Um aplicativo desenvolvido especificamente para estúdios de interiores,
+          iluminação e arquitetura. Em uso pela minha equipe de design — acompanhando
+          mais de 250 projetos ativos por ano, do briefing à instalação.
+        </p>
+        <div class="hero-actions">
+          <a href="#how-it-works" class="btn-ghost">Veja como funciona ↓</a>
+          <a href="#contact" class="btn-ghost">Solicite um orçamento →</a>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img
+          src="/images/issa/iara-tablet.jpg"
+          alt="Iara Santos usando o ISSA Project"
+        />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ THE PROBLEM ============ -->
+  <section class="issa-section">
+    <div class="container narrow">
+      <p class="section-eyebrow">O problema</p>
+      <h2 class="section-title">
+        Estúdios de design perdem dinheiro para a <em>névoa operacional</em>.
+      </h2>
+      <div class="prose-block">
+        <p>
+          As ferramentas não foram feitas para a gente. O Asana é genérico demais.
+          O Trello não dá conta de pipeline em escala. As planilhas quebram no
+          momento em que a equipe passa de três pessoas. Então estúdios de design
+          montam meio-sistemas espalhados por cinco aplicativos diferentes —
+          e perdem visibilidade, prazos, especificações e dinheiro nas frestas
+          entre eles.
+        </p>
+        <p>
+          Vi isso acontecer na minha própria equipe. Então desenhei uma ferramenta
+          para resolver, do jeito que estúdios de design realmente trabalham.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="issa-section bone-warm" id="how-it-works">
+    <div class="container">
+      <p class="section-eyebrow">Como funciona</p>
+      <h2 class="section-title">Uma única fonte da verdade, <em>moldada para o design.</em></h2>
+
+      <div class="features-grid">
+        <article class="feature">
+          <span class="feature-num">01</span>
+          <h3>Status do projeto em tempo real, por fase</h3>
+          <p>
+            Briefing, conceito, desenvolvimento de projeto, documentação, instalação.
+            Cada projeto visível de relance, com sinalizadores de gargalo, risco
+            de prazo e status de aprovação do cliente.
+          </p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-num">02</span>
+          <h3>Comunicação cliente e equipe, rastreada</h3>
+          <p>
+            Cada aprovação, cada solicitação de mudança, cada decisão registrada
+            em um único lugar e amarrada ao projeto — não dispersa em threads de
+            e-mail, WhatsApp e atas de reunião que ninguém encontra depois.
+          </p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-num">03</span>
+          <h3>Métricas por setor e ROI</h3>
+          <p>
+            Painéis de desempenho por integrante da equipe, tipo de projeto e
+            segmento. Veja onde o estúdio é lucrativo e onde está perdendo tempo —
+            em números, não em achismo.
+          </p>
+        </article>
+
+        <article class="feature">
+          <span class="feature-num">04</span>
+          <h3>Repasse automatizado para o time comercial</h3>
+          <p>
+            Quando uma fase de projeto fecha, especificações, listas de materiais
+            e aprovações fluem automaticamente para quem orça, compra ou vende.
+            Sem retrabalho de digitação, sem peças esquecidas, sem
+            &quot;espera, qual era a marca dessa luminária mesmo?&quot;.
+          </p>
+        </article>
+      </div>
+
+      <div class="placeholder">
+        <p class="placeholder-eyebrow">Capturas de tela e vídeo demo</p>
+        <p>
+          Walkthrough ao vivo e imagens do produto chegam em breve nesta seção.
+          Enquanto isso, solicite uma demonstração personalizada pelo formulário
+          abaixo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT SOLVES ============ -->
+  <section class="issa-section">
+    <div class="container narrow">
+      <p class="section-eyebrow">Para quem foi feito</p>
+      <h2 class="section-title">Pensado para estúdios que <em>se recusam a crescer no caos.</em></h2>
+
+      <ul class="solves-list">
+        <li>
+          <strong>Estúdios de arquitetura, interiores e iluminação</strong> que
+          rodam um portfólio de projetos simultâneos, com vários designers por projeto.
+        </li>
+        <li>
+          <strong>Estúdios com entregas detalhadas</strong> — pranchas de marcenaria
+          executiva, quadros de luminárias, cadernos de acabamentos — que se perdem
+          em ferramentas genéricas de gestão.
+        </li>
+        <li>
+          <strong>Estúdios crescendo além de 5 pessoas</strong>, onde a comunicação
+          ad-hoc começa a falhar e a responsabilidade fica difusa.
+        </li>
+        <li>
+          <strong>Estúdios que cobram por fase ou marco</strong> e precisam de
+          repasses limpos entre design, comercial e execução.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CUSTOMIZATION ============ -->
+  <section class="issa-section bone-warm">
+    <div class="container narrow">
+      <p class="section-eyebrow">Customização e onboarding</p>
+      <h2 class="section-title">Configurado ao seu estúdio, <em>e não o contrário.</em></h2>
+      <div class="prose-block">
+        <p>
+          O ISSA Project não é um SaaS template ao qual você se adapta.
+          É configurado para refletir como o seu estúdio trabalha de fato —
+          suas fases, suas entregas, suas convenções de nomeação, sua cadência
+          de aprovação com cliente, seu repasse para o comercial.
+        </p>
+        <p>
+          A implementação inclui: descoberta estruturada do seu fluxo atual,
+          configuração customizada, treinamento da equipe e 30 dias de suporte
+          de lançamento. O preço é por estúdio — não por usuário.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="issa-cta-section" id="contact">
+    <div class="container narrow">
+      <h2 class="cta-title">
+        Ficou interessado? <em>Vamos conversar.</em>
+      </h2>
+      <p class="cta-body">
+        Me conte sobre o seu estúdio, o tamanho da equipe e onde as coisas
+        emperram hoje. Eu retorno com um walkthrough personalizado e um
+        orçamento em até 48 horas.
+      </p>
+      <div class="cta-actions">
+        <a
+          href="/pt/contact?subject=issa-project"
+          class="btn-ghost btn-large"
+        >
+          Solicitar orçamento →
+        </a>
+        <a
+          href="mailto:iarasantos.is@icloud.com?subject=ISSA%20Project%20%E2%80%94%20Or%C3%A7amento"
+          class="btn-ghost btn-large"
+        >
+          Enviar e-mail direto →
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ============ HERO ============ */
+  .issa-hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 900px) {
+    .hero-grid { grid-template-columns: 1.3fr 1fr; gap: 5rem; }
+  }
+  .hero-text .eyebrow { margin-bottom: 1.5rem; }
+  .hero-title {
+    margin: 0 0 2rem;
+    line-height: 1;
+  }
+  .hero-lede {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 32rem;
+    margin: 0 0 2.5rem;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .hero-photo {
+    margin: 0;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: var(--sand);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ============ SECTIONS ============ */
+  .issa-section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .issa-section.bone-warm { background: var(--bone-warm); }
+  .narrow { max-width: 50rem; }
+
+  .section-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 1.5rem;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2rem, 3vw + 0.5rem, 3rem);
+    line-height: 1.05;
+    margin: 0 0 2.5rem;
+    max-width: 28ch;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .prose-block { max-width: 38rem; }
+  .prose-block p {
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  /* ============ FEATURES ============ */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+  }
+  @media (min-width: 700px) {
+    .features-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  }
+
+  .feature {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bronze);
+  }
+  .feature-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--bronze);
+  }
+  .feature h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0;
+  }
+  .feature p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .placeholder {
+    background: var(--bone);
+    border: 1px dashed var(--bronze);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .placeholder-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 0.5rem;
+  }
+  .placeholder p:last-child {
+    color: var(--ink-muted);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ============ SOLVES LIST ============ */
+  .solves-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .solves-list li {
+    padding-left: 1.5rem;
+    border-left: 2px solid var(--bronze);
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .solves-list strong { color: var(--ink); font-weight: 500; }
+
+  /* ============ CTA ============ */
+  .issa-cta-section {
+    padding: 6rem 0;
+    background: var(--ink);
+    color: var(--bone);
+  }
+  .cta-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 4vw + 0.5rem, 3.5rem);
+    line-height: 1.05;
+    color: var(--bone);
+    margin: 0 0 1.5rem;
+  }
+  .cta-title em { font-style: italic; color: var(--sand); }
+  .cta-body {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--sand);
+    margin: 0 0 2.5rem;
+    max-width: 36rem;
+    line-height: 1.5;
+  }
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+  }
+  .issa-cta-section .btn-ghost {
+    color: var(--bone);
+    border-color: var(--bone);
+  }
+  .issa-cta-section .btn-ghost:hover {
+    background: var(--bone);
+    color: var(--ink);
+  }
+</style>
