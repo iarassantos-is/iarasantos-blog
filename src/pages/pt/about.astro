@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { t } from '../../i18n/ui';
 
 const locale = 'pt' as const;
 ---
@@ -8,13 +7,13 @@ const locale = 'pt' as const;
 <BaseLayout
   locale={locale}
   title="Sobre"
-  description="Iara Santos — arquiteta e designer de interiores com 6+ anos de experiência e prática paralela em iluminação e gestão de projetos."
+  description="Iara Santos — designer de interiores e lighting designer, coordenadora de uma equipe de seis pessoas em 250 projetos por ano, e criadora do ISSA Project."
 >
   <section class="about container">
     <header class="about-header">
       <p class="eyebrow" data-anim>Sobre</p>
       <h1 class="display about-title" data-anim>
-        Um ofício enraizado em <em>atenção ao material</em> e luz pensada.
+        Uma arquiteta, uma lighting designer, e a pessoa que coordena o projeto — <em>a mesma.</em>
       </h1>
     </header>
 
@@ -22,83 +21,108 @@ const locale = 'pt' as const;
       <!-- ============ MAIN COLUMN ============ -->
       <div class="about-body">
         <p class="lede">
-          Sou Iara Santos — arquiteta e designer de interiores baseada em
-          Belo Horizonte, com seis anos de experiência entregando projetos
-          residenciais e comerciais do conceito à execução, e prática paralela
-          em lighting design e gestão de projetos.
+          Sou Iara Santos. Sou designer de interiores e lighting designer, com seis
+          anos de prática e três coisas que costumo estar fazendo ao mesmo tempo:
+          projetando o ambiente, projetando a luz, e coordenando o projeto que
+          leva os dois até a obra.
         </p>
 
         <p>
-          Formação em arquitetura. Especialização em lighting design.
-          O método veio de anos coordenando projetos complexos no prazo e
-          dentro do orçamento — atualmente liderando uma equipe de seis pessoas
-          e supervisionando aproximadamente 250 projetos ativos por ano na
-          <strong>Everlight</strong>, uma das principais empresas de iluminação
-          do Brasil. Cofundei a <strong>SIS Arquitetura</strong> em 2019 e a
-          mantive até 2025, entregando mais de 150 projetos residenciais e de
-          interiores, do conceito à documentação final.
-        </p>
-
-        <p>
-          O que sempre me traz de volta ao mesmo ponto: os melhores ambientes
-          que já visitei são resultado de uma única cabeça mantendo três fios
-          esticados ao mesmo tempo — a ideia espacial, a verdade do material e
-          a luz que faz os dois aparecerem. Escrevo aqui para pensar em voz alta
-          sobre isso.
+          Acho que não são três profissões. São um único ofício com três faces,
+          e os estúdios que mais admiro são os que conseguem segurar as três ao
+          mesmo tempo. Esta página existe para dizer o que faço, o que construí,
+          e o que está aberto.
         </p>
 
         <h2>O que faço</h2>
 
         <p>
-          Residencial alto padrão e projetos comerciais onde a atmosfera importa
-          tanto quanto o programa. Concepção até documentação técnica:
-          plantas humanizadas, especificação de FF&E, detalhamento de marcenaria
-          sob medida, plantas de teto refletido e integração de iluminação.
-          Produzo conjuntos de pranchas em padrão americano de construção
-          (sq ft, IES footcandle guidelines, ADA, IBC) e domino AutoCAD,
-          SketchUp + Enscape, Dialux Evo e SketchUp Layout. Revit em formação.
-        </p>
-
-        <h2>Como trabalho</h2>
-
-        <p>
-          Modo remoto desde 2019. Sou autodidata, focada em prazos e confortável
-          assumindo um projeto do briefing à entrega final sem precisar de
-          orientação constante. Comunico-me em inglês com clientes internacionais
-          e mantenho fluxos assíncronos compatíveis com diferentes fusos.
+          Residencial alto padrão e projetos comerciais onde a atmosfera é parte
+          do briefing. Concepção até documentação técnica: plantas, especificação
+          de FF&E, detalhamento de marcenaria sob medida, plantas de teto refletido,
+          integração de iluminação. Produzo conjuntos de pranchas em padrão americano —
+          square feet, AFF, IES footcandle guidelines, ADA, IBC, NKBA — em AutoCAD
+          (avançado), SketchUp + Layout (avançado), Dialux Evo (avançado) para
+          fotometria, Enscape para visualização, Revit em formação.
         </p>
 
         <p>
-          Há alguns anos cansei de ver bons projetos de design serem prejudicados
-          por má gestão. Então construí uma ferramenta para resolver isso —
-          o <strong>ISSA Project</strong>, um aplicativo de gestão desenhado
-          especificamente para equipes de design de interiores e iluminação.
-          Hoje está em uso na minha equipe completa na Everlight, acompanhando
-          do conceito à instalação em todo o pipeline de projetos.
+          Dois portfólios distintos vivem neste site:
+          <a href="/pt/portfolios">design de interiores</a> e
+          <a href="/pt/portfolios">lighting design</a>. Eles conversam entre si.
+        </p>
+
+        <h2>Como cheguei até aqui</h2>
+
+        <p>
+          Co-fundei a <strong>SIS Arquitetura</strong> em 2019 e a mantive até
+          2025 — um estúdio de arquitetura de interiores com cerca de 70%
+          residencial e 30% comercial. Entreguei mais de 150 projetos lá, do
+          briefing à entrega, com responsabilidade integral em cada um. Esse é
+          o capítulo do estúdio.
+        </p>
+
+        <p>
+          Em paralelo, em 2019, entrei na empresa onde coordeno hoje o setor de
+          arquitetura e lighting design. Lidero uma equipe de seis pessoas e
+          acompanho cerca de 250 projetos ativos por ano, entre residencial,
+          comercial, hoteleiro e corporativo. Esse é o capítulo da operação.
+        </p>
+
+        <p>
+          O que aprendi rodando os dois ao mesmo tempo é que a camada operacional
+          de uma prática de design não é separada do ofício. É o que permite ao
+          ofício escalar. Boa parte dos estúdios descobre isso pela via difícil.
+        </p>
+
+        <h2>O que construí</h2>
+
+        <p>
+          Desenvolvi o <a href="/pt/issaproject"><strong>ISSA Project</strong></a> —
+          um aplicativo de gestão de projetos pensado especificamente para
+          estúdios de interiores, iluminação e arquitetura — porque toda
+          ferramenta genérica que tentei (Asana, Trello, Notion, ClickUp, uma
+          série constrangedora de planilhas) acabava quebrando contra a textura
+          real de como pipelines de design funcionam. Construí para a minha equipe.
+          Está em uso diário, e abrindo agora para outros estúdios.
+        </p>
+
+        <p>
+          A história de por que construí está
+          <a href="/pt/blog/como-gerencio-250-projetos-pt">neste post</a>.
+        </p>
+
+        <h2>O que escrevo aqui</h2>
+
+        <p>
+          Este site é a sede da minha prática. Três categorias sustentam a maior
+          parte do que está aqui. <strong>Notas de método</strong>, sobre como o
+          trabalho se organiza — processo, gestão, a camada operacional que permite
+          ao ofício acontecer. <strong>Projetos</strong>, onde percorro projetos
+          específicos com o nível de detalhe que um caderno editorial pede.
+          <strong>Olhar crítico</strong>, onde leio o trabalho dos outros —
+          arquitetos que admiro, livros, projetos com os quais discordo
+          produtivamente.
+        </p>
+
+        <p>
+          A escrita é a prática. A prática é a escrita. Uma alimenta a outra.
         </p>
 
         <h2>Atualmente</h2>
 
         <p>
-          Atendendo remotamente clientes em toda as Américas. Aberta a posições
-          sênior em design de interiores, lighting design e design project
-          management em estúdios nos EUA — 100% remoto, com abertura para
-          relocation e patrocínio de visto para a oportunidade certa de longo prazo.
+          Coordenando o setor de arquitetura e lighting design no meu trabalho
+          atual. Aberta a colaborações pontuais em projetos onde o meu olhar
+          técnico ou a minha experiência com gestão possam contribuir. E em
+          conversa permanente com estúdios brasileiros sobre o ISSA Project.
         </p>
 
-        <h2>Áreas selecionadas</h2>
-
-        <ul>
-          <li>Residencial alto padrão — concepção e documentação completas</li>
-          <li>Interiores corporativos — de andares médios a enterprise</li>
-          <li>Iluminação arquitetônica em camadas — especificação, controle, ajuste de cor, cálculos fotométricos</li>
-          <li>Gestão de projetos para equipes de design — do briefing à entrega, modo assíncrono</li>
-        </ul>
+        <p>
+          Se algo aqui ressoa com o que o seu estúdio precisa hoje — me escreve.
+        </p>
 
         <div class="about-actions">
-          <a href="/cv" class="btn-ghost">
-            {t(locale, 'about.cv')} →
-          </a>
           <a href="/pt/portfolios" class="btn-ghost">
             Ver portfólios →
           </a>
@@ -120,17 +144,17 @@ const locale = 'pt' as const;
 
         <div class="aside-id">
           <p class="aside-name">Iara Santos</p>
-          <p class="aside-role">Interior Designer · Iluminação · Gestão de projetos</p>
+          <p class="aside-role">Designer de Interiores · Lighting Designer · Coordenadora</p>
           <p class="aside-meta">
-            Belo Horizonte, BR<br/>
-            Aberta a remoto &amp; relocation<br/>
-            Fusos horários dos EUA
+            Belo Horizonte, Brasil<br/>
+            Coordenando 250 projetos por ano<br/>
+            Criadora do ISSA Project
           </p>
         </div>
 
         <a href="/pt/issaproject" class="issa-card">
-          <p class="issa-eyebrow">{t(locale, 'about.issaTeaser')}</p>
-          <p class="issa-cta">{t(locale, 'about.issaCta')}</p>
+          <p class="issa-eyebrow">Conheça o aplicativo de gestão que construí</p>
+          <p class="issa-cta">Ver ISSA Project →</p>
         </a>
       </aside>
     </div>
