@@ -13,8 +13,8 @@ interface Props {
   readingTime: number;
   cover?: string;
   coverAlt?: string;
-  /** controle visual: hero (primeiro post da home) | standard (lista) */
-  variant?: 'hero' | 'standard';
+  /** controle visual: hero (primeiro post da home) | standard (lista) | featured (grid de 3 na home) */
+  variant?: 'hero' | 'standard' | 'featured';
 }
 
 const { locale, href, title, subtitle, category, date, readingTime, cover, coverAlt, variant = 'standard' } = Astro.props;
@@ -87,6 +87,37 @@ const catKey = `cat.${category}` as const;
   .post-card.hero .card-title {
     font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
     line-height: 1.05;
+  }
+
+  /* FEATURED variant — uniform cards in a 3-column grid */
+  .post-card.featured {
+    border-bottom: none;
+    padding: 0;
+  }
+  .post-card.featured .card-link {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 720px) {
+    .post-card.featured .card-link {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+  }
+  .post-card.featured .cover {
+    aspect-ratio: 4 / 3;
+  }
+  .post-card.featured .card-title {
+    font-size: clamp(1.25rem, 1.4vw + 0.5rem, 1.55rem);
+    line-height: 1.2;
+  }
+  .post-card.featured .card-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .post-card.featured .card-body {
+    gap: 0.6rem;
   }
 
   .cover {

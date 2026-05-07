@@ -7,7 +7,25 @@ import { getPostsByLocale, buildSearchString } from '../utils/posts';
 
 const locale = 'en' as const;
 const posts = await getPostsByLocale(locale);
-const [hero, ...rest] = posts;
+
+// ============================================================
+// FEATURED TRIO — top of the home page
+// To change which 3 posts are featured, edit the slugs below.
+// Slugs are the .md filename without extension (e.g. "on-restraint").
+// Order in this list determines the order of cards on the page.
+// If a slug is not found in the posts collection, it's skipped silently.
+// ============================================================
+const FEATURED_SLUGS = [
+  'how-i-run-250-design-projects',
+  'on-a-kitchen-that-breathes',
+  'light-that-knows-what-to-do',
+] as const;
+
+const featured = FEATURED_SLUGS
+  .map((slug) => posts.find((p) => p.slug === slug))
+  .filter((p): p is NonNullable<typeof p> => p !== undefined);
+
+const rest = posts.filter((p) => !FEATURED_SLUGS.includes(p.slug as typeof FEATURED_SLUGS[number]));
 ---
 
 <BaseLayout
@@ -33,20 +51,27 @@ const [hero, ...rest] = posts;
       <p class="empty">Writing in progress. The first studies arrive shortly.</p>
     ) : (
       <>
-        {hero && (
-          <div data-searchable data-search-text={buildSearchString(hero)}>
-            <PostCard
-              locale={locale}
-              href={localizePath(`/blog/${hero.slug}`, locale)}
-              title={hero.data.title}
-              subtitle={hero.data.subtitle}
-              category={hero.data.category}
-              date={hero.data.publishDate}
-              readingTime={hero.data.readingTime}
-              cover={hero.data.cover}
-              coverAlt={hero.data.coverAlt}
-              variant="hero"
-            />
+        {featured.length > 0 && (
+          <div class="featured-block">
+            <p class="featured-eyebrow">Featured</p>
+            <div class="featured-grid">
+              {featured.map((post) => (
+                <div data-searchable data-search-text={buildSearchString(post)}>
+                  <PostCard
+                    locale={locale}
+                    href={localizePath(`/blog/${post.slug}`, locale)}
+                    title={post.data.title}
+                    subtitle={post.data.subtitle}
+                    category={post.data.category}
+                    date={post.data.publishDate}
+                    readingTime={post.data.readingTime}
+                    cover={post.data.cover}
+                    coverAlt={post.data.coverAlt}
+                    variant="featured"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
@@ -94,6 +119,31 @@ const [hero, ...rest] = posts;
   }
 
   .posts-section { padding: 4rem 0 2rem; }
+
+  .featured-block {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .featured-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin: 0 0 2rem;
+  }
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 720px) {
+    .featured-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+
   .posts-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
   .empty {
     text-align: center;
