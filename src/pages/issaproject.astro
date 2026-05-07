@@ -10,7 +10,7 @@ const locale = 'en' as const;
 <BaseLayout
   locale={locale}
   title="ISSA Project — Project management built for design studios"
-  description="ISSA Project is a project management application built specifically for interior, lighting, and architecture studios. Live with a 6-person team running 250+ projects/year."
+  description="ISSA Project is a project management application built specifically for interior, lighting, and architecture studios. Live with a 6-person team running 250+ projects per year — designed to give leadership data they can act on, not informed guesswork."
 >
   <!-- ============ HERO ============ -->
   <section class="issa-hero">
@@ -18,12 +18,12 @@ const locale = 'en' as const;
       <div class="hero-text">
         <p class="eyebrow" data-anim>ISSA Project</p>
         <h1 class="display hero-title" data-anim>
-          The project management tool <em>I built</em> because nothing else worked.
+          The project management tool <em>I built</em> because nothing else could give my leadership a straight answer.
         </h1>
         <p class="hero-lede" data-anim>
           A purpose-built application for interior, lighting, and architecture
-          studios. Live with my full design team — tracking 250+ active projects
-          per year from briefing to installation.
+          studios. Live with the team I coordinate — tracking 250+ active projects
+          per year, end to end.
         </p>
         <div class="hero-actions">
           <a href="#how-it-works" class="btn-ghost">See how it works ↓</a>
@@ -45,19 +45,38 @@ const locale = 'en' as const;
     <div class="container narrow">
       <p class="section-eyebrow">The problem</p>
       <h2 class="section-title">
-        Design studios lose money to <em>operational fog</em>.
+        The problem most studios <em>learn to live with</em>
       </h2>
       <div class="prose-block">
         <p>
-          The tools weren't built for us. Asana is too generic.
-          Trello can't show pipeline scale. Spreadsheets break the moment a
-          team grows beyond three. So design studios cobble together half-systems
-          across five apps — and lose visibility, deadlines, specifications,
-          and money in the gaps between them.
+          For two years, I tried to run a 250-project pipeline through tools
+          that were not built for design.
         </p>
         <p>
-          I watched it happen on my own team. So I designed a tool to fix it,
-          for the way design studios actually work.
+          Asana. Trello. Notion. ClickUp. Spreadsheets I kept rebuilding.
+          Each one promised flexibility. Each one demanded that the team
+          translate real design work into a generic vocabulary that did not
+          fit. The result was always the same: weeks of adoption, months of
+          erosion, eventual abandonment.
+        </p>
+        <p>
+          What broke, in every attempt, was not the tool. It was the
+          <em>connective tissue</em> — the decisions, approvals, handoffs,
+          and specifications that hold a project together. They lived in
+          nine places at once and in no place reliably. And when leadership
+          asked me real questions — about productivity, about bottlenecks,
+          about whether to hire or let someone go — I had to answer with
+          informed guesswork.
+        </p>
+        <p>
+          The cost of that gap is not measured in dropped tasks. It is
+          measured in deals lost upstream of the design phase, deadlines
+          missed because nobody knew the deadline was at risk, and decisions
+          made for years on the wrong data.
+        </p>
+        <p>
+          I built ISSA Project to close that gap, the way design studios
+          actually work.
         </p>
       </div>
     </div>
@@ -72,41 +91,51 @@ const locale = 'en' as const;
       <div class="features-grid">
         <article class="feature">
           <span class="feature-num">01</span>
-          <h3>Real-time project status, by phase</h3>
+          <h3>Real-time pipeline visibility, by what actually matters</h3>
           <p>
-            Briefing, concept, design development, documentation, installation.
-            Every project visible at a glance, with bottleneck flags, deadline
-            risk, and client-review status.
+            Every active project visible at a glance, with the variables your
+            business runs on: ownership, status, deadline risk, client-review
+            pending, bottleneck flags. Not a generic kanban. The states a
+            design pipeline actually moves through, named the way your studio
+            names them.
           </p>
         </article>
 
         <article class="feature">
           <span class="feature-num">02</span>
-          <h3>Client &amp; team communication, tracked</h3>
+          <h3>Client and team communication, automated and tracked</h3>
           <p>
-            Every approval, change request, and decision logged in one place
-            and tied to the project — not scattered across email threads,
-            WhatsApp, and meeting notes nobody can find.
+            Clients are kept informed automatically — through WhatsApp,
+            professionally, in the channel they already use. Approvals,
+            change requests, and decisions are logged against the project,
+            not scattered across email threads and meeting notes. The
+            commercial side and the design team see the same record.
           </p>
         </article>
 
         <article class="feature">
           <span class="feature-num">03</span>
-          <h3>Sector-level metrics &amp; ROI</h3>
+          <h3>Performance data your leadership can act on</h3>
           <p>
-            Performance dashboards by team member, project type, and segment.
-            See where your studio is profitable and where it's leaking time —
-            in numbers, not anecdotes.
+            Dashboards by team member, by project type, by segment. Where
+            the studio is profitable. Where the bottlenecks live. Whether
+            the conversion problem is in the design phase or somewhere
+            upstream. Within the first months of running it on my team,
+            the system surfaced two findings that had been hidden in
+            spreadsheets for years: a productivity gap concentrated in
+            specific people, and a conversion drag we had been blaming on
+            design that was, in fact, coming from a different team altogether.
           </p>
         </article>
 
         <article class="feature">
           <span class="feature-num">04</span>
-          <h3>Automated handoff to the commercial team</h3>
+          <h3>Automated handoff to the commercial side</h3>
           <p>
             When a design phase closes, specifications, BOMs, and approvals
             flow automatically to whoever quotes, sources, or sells.
-            No re-keying, no missing fixtures, no &quot;wait, what was the brand on this?&quot;
+            No re-keying. No missing fixtures. No &quot;wait, what was the
+            brand on this?&quot; three weeks into procurement.
           </p>
         </article>
       </div>
@@ -124,47 +153,46 @@ const locale = 'en' as const;
   <!-- ============ WHAT IT SOLVES ============ -->
   <section class="issa-section">
     <div class="container narrow">
-      <p class="section-eyebrow">What it solves</p>
+      <p class="section-eyebrow">Who it is for</p>
       <h2 class="section-title">Built for studios that <em>refuse to scale into chaos.</em></h2>
 
-      <ul class="solves-list">
-        <li>
-          <strong>Architecture, interior, and lighting studios</strong> running
-          a portfolio of concurrent projects with multiple designers per project.
-        </li>
-        <li>
-          <strong>Studios with high-detail deliverables</strong> — millwork shop
-          drawings, fixture schedules, finish books — that get lost in generic
-          PM tools.
-        </li>
-        <li>
-          <strong>Studios scaling past 5 people</strong> where ad-hoc communication
-          starts to break and ownership becomes fuzzy.
-        </li>
-        <li>
-          <strong>Studios that bill by phase or milestone</strong> and need clean
-          handoffs between design, commercial, and execution.
-        </li>
-      </ul>
+      <div class="prose-block">
+        <p>
+          Architecture, interior, and lighting studios running concurrent
+          projects with multiple designers per project. Studios with
+          high-detail deliverables — millwork shop drawings, fixture
+          schedules, finish books — that get lost in generic PM tools.
+          Studios scaling past five people, where ad-hoc communication
+          starts to break and ownership becomes fuzzy. Studios that bill
+          by phase or milestone and need clean handoffs between design,
+          commercial, and execution.
+        </p>
+        <p>
+          If your leadership is asking you for numbers and you are answering
+          with informed guesswork, ISSA was designed for the question they
+          are actually asking.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ============ CUSTOMIZATION ============ -->
   <section class="issa-section bone-warm">
     <div class="container narrow">
-      <p class="section-eyebrow">Customization &amp; onboarding</p>
+      <p class="section-eyebrow">Onboarding</p>
       <h2 class="section-title">Configured to your studio, <em>not the other way around.</em></h2>
       <div class="prose-block">
         <p>
-          ISSA Project is not a SaaS template you adapt to. It's configured
+          ISSA is not a SaaS template you adapt to. It is configured
           to match how your studio actually works — your phases, your
           deliverables, your naming conventions, your client-review cadence,
-          your handoff to the commercial team.
+          your handoff to whoever sells.
         </p>
         <p>
-          Onboarding includes: structured discovery of your current workflow,
+          Onboarding includes structured discovery of your current workflow,
           custom configuration, team training, and 30 days of launch support.
-          Pricing is per studio — not per seat.
+          Pricing is per studio, not per seat. One-time investment, not
+          recurring subscription.
         </p>
       </div>
     </div>
@@ -178,7 +206,7 @@ const locale = 'en' as const;
       </h2>
       <p class="cta-body">
         Tell me about your studio, your team size, and where things break down today.
-        I'll come back with a personalized walkthrough and a quote within 48 hours.
+        I will come back with a personalized walkthrough and a quote within 48 hours.
       </p>
       <div class="cta-actions">
         <a
@@ -339,23 +367,6 @@ const locale = 'en' as const;
     font-style: italic;
     margin: 0;
   }
-
-  /* ============ SOLVES LIST ============ */
-  .solves-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .solves-list li {
-    padding-left: 1.5rem;
-    border-left: 2px solid var(--bronze);
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-  .solves-list strong { color: var(--ink); font-weight: 500; }
 
   /* ============ CTA ============ */
   .issa-cta-section {

@@ -9,7 +9,7 @@ const locale = 'pt' as const;
 <BaseLayout
   locale={locale}
   title="ISSA Project — Gestão de projetos pensada para estúdios de design"
-  description="O ISSA Project é um aplicativo de gestão construído especificamente para estúdios de interiores, iluminação e arquitetura. Em uso por uma equipe de 6 pessoas com mais de 250 projetos por ano."
+  description="O ISSA Project é um aplicativo de gestão construído especificamente para estúdios de interiores, iluminação e arquitetura. Em uso por uma equipe de 6 pessoas em 250+ projetos por ano — desenhado para dar à diretoria dados que dão para agir, não achismo informado."
 >
   <!-- ============ HERO ============ -->
   <section class="issa-hero">
@@ -17,11 +17,11 @@ const locale = 'pt' as const;
       <div class="hero-text">
         <p class="eyebrow" data-anim>ISSA Project</p>
         <h1 class="display hero-title" data-anim>
-          A ferramenta de gestão <em>que eu construí</em> porque nada mais funcionava.
+          A ferramenta de gestão <em>que eu construí</em> porque nenhuma outra dava uma resposta direta para a minha diretoria.
         </h1>
         <p class="hero-lede" data-anim>
           Um aplicativo desenvolvido especificamente para estúdios de interiores,
-          iluminação e arquitetura. Em uso pela minha equipe de design — acompanhando
+          iluminação e arquitetura. Em uso pela equipe que coordeno — acompanhando
           mais de 250 projetos ativos por ano, do briefing à instalação.
         </p>
         <div class="hero-actions">
@@ -44,20 +44,38 @@ const locale = 'pt' as const;
     <div class="container narrow">
       <p class="section-eyebrow">O problema</p>
       <h2 class="section-title">
-        Estúdios de design perdem dinheiro para a <em>névoa operacional</em>.
+        O problema com que a maioria dos estúdios <em>aprende a conviver</em>
       </h2>
       <div class="prose-block">
         <p>
-          As ferramentas não foram feitas para a gente. O Asana é genérico demais.
-          O Trello não dá conta de pipeline em escala. As planilhas quebram no
-          momento em que a equipe passa de três pessoas. Então estúdios de design
-          montam meio-sistemas espalhados por cinco aplicativos diferentes —
-          e perdem visibilidade, prazos, especificações e dinheiro nas frestas
-          entre eles.
+          Por dois anos, tentei rodar um pipeline de 250 projetos em ferramentas
+          que não tinham sido feitas para design.
         </p>
         <p>
-          Vi isso acontecer na minha própria equipe. Então desenhei uma ferramenta
-          para resolver, do jeito que estúdios de design realmente trabalham.
+          Asana. Trello. Notion. ClickUp. Planilhas que eu refazia a cada três
+          meses. Cada uma prometia flexibilidade. Cada uma exigia que a equipe
+          traduzisse o trabalho real para um vocabulário genérico que não
+          cabia. O resultado era sempre o mesmo: semanas de adoção, meses de
+          erosão, abandono no fim.
+        </p>
+        <p>
+          O que quebrava, em toda tentativa, não era a ferramenta. Era o
+          <em>tecido conjuntivo</em> — as decisões, aprovações, repasses e
+          especificações que mantêm um projeto inteiro. Eles viviam em nove
+          lugares ao mesmo tempo e em nenhum lugar de forma confiável. E
+          quando a diretoria me fazia pergunta de verdade — sobre produtividade,
+          sobre gargalo, sobre contratar ou desligar alguém — eu respondia
+          com achismo informado.
+        </p>
+        <p>
+          O custo dessa lacuna não se mede em tarefa perdida. Se mede em
+          negócio perdido antes mesmo de o projeto começar, em prazo estourado
+          porque ninguém sabia que o prazo estava em risco, e em decisões
+          tomadas durante anos em cima de dados errados.
+        </p>
+        <p>
+          Construí o ISSA Project para fechar essa lacuna, do jeito que
+          estúdios de design realmente trabalham.
         </p>
       </div>
     </div>
@@ -72,42 +90,52 @@ const locale = 'pt' as const;
       <div class="features-grid">
         <article class="feature">
           <span class="feature-num">01</span>
-          <h3>Status do projeto em tempo real, por fase</h3>
+          <h3>Visibilidade do pipeline em tempo real, pelas variáveis que importam</h3>
           <p>
-            Briefing, conceito, desenvolvimento de projeto, documentação, instalação.
-            Cada projeto visível de relance, com sinalizadores de gargalo, risco
-            de prazo e status de aprovação do cliente.
+            Cada projeto ativo visível de relance, com as variáveis que de fato
+            movem o negócio: responsável, status, risco de prazo, aprovação de
+            cliente pendente, sinalização de gargalo. Não é kanban genérico.
+            São os estados pelos quais um pipeline de design realmente passa,
+            nomeados do jeito que o seu estúdio nomeia.
           </p>
         </article>
 
         <article class="feature">
           <span class="feature-num">02</span>
-          <h3>Comunicação cliente e equipe, rastreada</h3>
+          <h3>Comunicação com cliente e equipe, automatizada e rastreada</h3>
           <p>
-            Cada aprovação, cada solicitação de mudança, cada decisão registrada
-            em um único lugar e amarrada ao projeto — não dispersa em threads de
-            e-mail, WhatsApp e atas de reunião que ninguém encontra depois.
+            Clientes são informados automaticamente — pelo WhatsApp, de forma
+            profissional, no canal que eles já usam. Aprovações, solicitações
+            de mudança e decisões ficam registradas no projeto, não dispersas
+            em threads de e-mail e atas que ninguém acha depois. Comercial e
+            equipe de projeto enxergam o mesmo histórico.
           </p>
         </article>
 
         <article class="feature">
           <span class="feature-num">03</span>
-          <h3>Métricas por setor e ROI</h3>
+          <h3>Dados de desempenho em que a sua diretoria pode agir</h3>
           <p>
-            Painéis de desempenho por integrante da equipe, tipo de projeto e
-            segmento. Veja onde o estúdio é lucrativo e onde está perdendo tempo —
-            em números, não em achismo.
+            Painéis por integrante da equipe, por tipo de projeto, por segmento.
+            Onde o estúdio é lucrativo. Onde está o gargalo. Se o problema de
+            conversão está dentro da fase de projeto ou em algum ponto antes
+            dela. Nos primeiros meses rodando na minha equipe, o sistema trouxe
+            à tona duas descobertas que as planilhas vinham escondendo havia
+            anos: um gargalo de produtividade concentrado em pessoas
+            específicas, e uma queda de conversão que vinha sendo atribuída
+            ao projeto e que, na verdade, era problema de outra equipe.
           </p>
         </article>
 
         <article class="feature">
           <span class="feature-num">04</span>
-          <h3>Repasse automatizado para o time comercial</h3>
+          <h3>Repasse automatizado para o comercial</h3>
           <p>
             Quando uma fase de projeto fecha, especificações, listas de materiais
             e aprovações fluem automaticamente para quem orça, compra ou vende.
-            Sem retrabalho de digitação, sem peças esquecidas, sem
-            &quot;espera, qual era a marca dessa luminária mesmo?&quot;.
+            Sem retrabalho de digitação. Sem peça esquecida. Sem
+            &quot;espera, qual era a marca dessa luminária mesmo?&quot; três
+            semanas dentro da compra.
           </p>
         </article>
       </div>
@@ -129,44 +157,43 @@ const locale = 'pt' as const;
       <p class="section-eyebrow">Para quem foi feito</p>
       <h2 class="section-title">Pensado para estúdios que <em>se recusam a crescer no caos.</em></h2>
 
-      <ul class="solves-list">
-        <li>
-          <strong>Estúdios de arquitetura, interiores e iluminação</strong> que
-          rodam um portfólio de projetos simultâneos, com vários designers por projeto.
-        </li>
-        <li>
-          <strong>Estúdios com entregas detalhadas</strong> — pranchas de marcenaria
-          executiva, quadros de luminárias, cadernos de acabamentos — que se perdem
-          em ferramentas genéricas de gestão.
-        </li>
-        <li>
-          <strong>Estúdios crescendo além de 5 pessoas</strong>, onde a comunicação
-          ad-hoc começa a falhar e a responsabilidade fica difusa.
-        </li>
-        <li>
-          <strong>Estúdios que cobram por fase ou marco</strong> e precisam de
-          repasses limpos entre design, comercial e execução.
-        </li>
-      </ul>
+      <div class="prose-block">
+        <p>
+          Estúdios de arquitetura, interiores e iluminação que rodam projetos
+          simultâneos com vários designers por projeto. Estúdios com entregas
+          detalhadas — pranchas de marcenaria executiva, quadros de luminárias,
+          cadernos de acabamento — que se perdem em ferramenta genérica.
+          Estúdios crescendo além de cinco pessoas, onde a comunicação ad hoc
+          começa a falhar e a responsabilidade fica difusa. Estúdios que cobram
+          por fase ou marco e precisam de repasse limpo entre projeto, comercial
+          e execução.
+        </p>
+        <p>
+          Se a sua diretoria está te pedindo números e você responde com
+          achismo informado, o ISSA foi desenhado exatamente para a pergunta
+          que está sendo feita.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ============ CUSTOMIZATION ============ -->
   <section class="issa-section bone-warm">
     <div class="container narrow">
-      <p class="section-eyebrow">Customização e onboarding</p>
+      <p class="section-eyebrow">Implementação</p>
       <h2 class="section-title">Configurado ao seu estúdio, <em>e não o contrário.</em></h2>
       <div class="prose-block">
         <p>
-          O ISSA Project não é um SaaS template ao qual você se adapta.
+          O ISSA não é um SaaS template ao qual você se adapta.
           É configurado para refletir como o seu estúdio trabalha de fato —
           suas fases, suas entregas, suas convenções de nomeação, sua cadência
-          de aprovação com cliente, seu repasse para o comercial.
+          de aprovação com cliente, seu repasse para quem vende.
         </p>
         <p>
-          A implementação inclui: descoberta estruturada do seu fluxo atual,
+          A implementação inclui descoberta estruturada do seu fluxo atual,
           configuração customizada, treinamento da equipe e 30 dias de suporte
-          de lançamento. O preço é por estúdio — não por usuário.
+          de lançamento. Preço é por estúdio, não por usuário. Investimento
+          único, não assinatura.
         </p>
       </div>
     </div>
@@ -342,23 +369,6 @@ const locale = 'pt' as const;
     font-style: italic;
     margin: 0;
   }
-
-  /* ============ SOLVES LIST ============ */
-  .solves-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .solves-list li {
-    padding-left: 1.5rem;
-    border-left: 2px solid var(--bronze);
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-  .solves-list strong { color: var(--ink); font-weight: 500; }
 
   /* ============ CTA ============ */
   .issa-cta-section {
