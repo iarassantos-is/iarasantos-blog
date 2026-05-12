@@ -25,7 +25,7 @@ const featured = FEATURED_SLUGS
   .map((slug) => posts.find((p) => p.slug === slug))
   .filter((p): p is NonNullable<typeof p> => p !== undefined);
 
-const rest = posts.filter((p) => !FEATURED_SLUGS.includes(p.slug as typeof FEATURED_SLUGS[number]));
+const rest = posts;
 ---
 
 <BaseLayout
