@@ -16,7 +16,16 @@ coverAlt: "Residential lighting study — concealed linear LED in wood paneling,
 draft: false
 translationSlug: "luz-que-sabe-o-que-fazer"
 ---
-
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:0 0 2.5rem;background:var(--sand);">
+     <iframe
+       src="https://player.vimeo.com/video/1191658940?title=0&byline=0&portrait=0"
+       style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+       allow="autoplay; fullscreen; picture-in-picture"
+       allowfullscreen
+       title="Dialux walkthrough">
+     </iframe>
+   </div>
+   
 The fixture you notice is the fixture that failed.
 
 Most residential lighting is judged by what it looks like on the ceiling. The published image of a beautiful pendant. The catalog photo of an architectural sconce. What I evaluate, before any of that, is what the light *does*. Where it goes. How it falls on the materials. Whether the eye can stay in the room for four hours without quietly fatiguing. The fixture is the means. The means is supposed to disappear.
