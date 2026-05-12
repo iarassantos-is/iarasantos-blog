@@ -3,7 +3,7 @@ title: "Sobre a contenção"
 subtitle: "O que as casas silenciosas de Vincent Van Duysen ensinam sobre a disciplina de deixar coisas de fora — e a camada que poderia sustentá-las depois do escurecer."
 description: "Uma leitura dos interiores residenciais de Vincent Van Duysen por Iara Santos — lógica proporcional, verdade material e uma nota respeitosa sobre a camada que poderia sustentar os ambientes depois do escurecer."
 category: "critical-eye"
-publishDate: 2026-05-14T10:00:00-03:00
+publishDate: 2026-05-07T10:00:00-03:00
 readingTime: 5
 tags:
   - olhar-critico

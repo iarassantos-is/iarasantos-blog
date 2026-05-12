@@ -3,7 +3,7 @@ title: "Onde o quarto termina e o banheiro começa"
 subtitle: "Uma suíte master desenhada como um único ambiente contínuo — um estudo na soleira que quase desaparece."
 description: "Um projeto de suíte master de alto padrão por Iara Santos lido como um único ambiente. Uma leitura próxima da lógica material, da estratégia de iluminação e da soleira que sustenta tudo."
 category: "project-showcase"
-publishDate: 2026-05-09T11:00:00-03:00
+publishDate: 2026-05-05T11:00:00-03:00
 readingTime: 6
 tags:
   - project-showcase

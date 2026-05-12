@@ -3,7 +3,7 @@ title: "Luz que sabe o que fazer"
 subtitle: "O raciocínio fotométrico por trás de um plano de iluminação residencial que desaparece como luminária e chega como ambiente. Projeto em obra."
 description: "Estudo de iluminação residencial por Iara Santos — controle de UGR, estratégia de ângulo de facho e análise em falsa cor no Dialux por trás de um plano flexível, focado em conforto, atualmente em obra."
 category: "project-showcase"
-publishDate: 2026-05-11T10:00:00-03:00
+publishDate: 2026-04-28T10:00:00-03:00
 readingTime: 7
 tags:
   - project-showcase

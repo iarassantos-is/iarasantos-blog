@@ -3,7 +3,7 @@ title: "Como uma cozinha explica de onde eu venho"
 subtitle: "Um estudo autoral em padrão americano — e o argumento sobre o que um olhar brasileiro traz para um problema americano."
 description: "Um estudo autoral de cozinha por Iara Santos em padrão residencial americano — e o argumento sobre o que um olhar brasileiro formado em outra escola traz para um problema residencial americano."
 category: "project-showcase"
-publishDate: 2026-05-06T20:00:00-03:00
+publishDate: 2026-04-23T11:00:00-03:00
 readingTime: 7
 tags:
   - residencial

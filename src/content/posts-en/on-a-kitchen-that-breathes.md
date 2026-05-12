@@ -3,7 +3,7 @@ title: "How a kitchen explains where I'm from"
 subtitle: "A self-directed study in US residential standards — and the case for what a Brazilian eye brings to an American problem."
 description: "A self-directed kitchen study by Iara Santos in US residential standards — and the case for what a Brazilian eye trained in another school brings to an American residential problem."
 category: "project-showcase"
-publishDate: 2026-05-06T20:00:00-03:00
+publishDate: 2026-04-23T11:00:00-03:00
 readingTime: 7
 tags:
   - residential

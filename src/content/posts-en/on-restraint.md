@@ -3,7 +3,7 @@ title: "On restraint"
 subtitle: "What Vincent Van Duysen's quiet houses teach about the discipline of leaving things out — and the one layer that could carry them past sunset."
 description: "A reading of Vincent Van Duysen's residential interiors by Iara Santos — proportional logic, material truth, and a respectful note on the layer that could carry the rooms past sunset."
 category: "critical-eye"
-publishDate: 2026-05-14T10:00:00-03:00
+publishDate: 2026-05-07T10:00:00-03:00
 readingTime: 5
 tags:
   - critical-eye

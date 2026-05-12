@@ -3,7 +3,7 @@ title: "Where the bedroom ends and the bath begins"
 subtitle: "A primary suite designed as one continuous environment — a study in the threshold that almost disappears."
 description: "A high-end primary suite project by Iara Santos read as one continuous environment. A close look at the material logic, the lighting strategy, and the threshold that holds it all together."
 category: "project-showcase"
-publishDate: 2026-05-09T11:00:00-03:00
+publishDate: 2026-05-05T11:00:00-03:00
 readingTime: 6
 tags:
   - project-showcase

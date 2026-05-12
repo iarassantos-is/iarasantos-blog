@@ -3,7 +3,7 @@ title: "Light that knows what to do"
 subtitle: "The photometric thinking behind a residential lighting plan that disappears as a fixture and arrives as the room. Project currently in construction."
 description: "A residential lighting study by Iara Santos — UGR control, beam angle strategy, and Dialux false-color analysis behind a flexible, comfort-first lighting plan currently in construction."
 category: "project-showcase"
-publishDate: 2026-05-11T10:00:00-03:00
+publishDate: 2026-04-28T10:00:00-03:00
 readingTime: 7
 tags:
   - project-showcase

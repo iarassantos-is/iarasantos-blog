@@ -3,7 +3,7 @@ title: "Por que este caderno existe"
 subtitle: "Um caderno de trabalho sobre interiores, luz e o ofício de construir espaços bem pensados — mantido em público."
 description: "Apresentação do IARA SANTOS — uma prática de escrita sobre design de interiores, iluminação e gestão de projetos."
 category: "method-notes"
-publishDate: 2026-05-05
+publishDate: 2026-04-21T10:00:00-03:00
 readingTime: 3
 tags:
   - processo-de-projeto

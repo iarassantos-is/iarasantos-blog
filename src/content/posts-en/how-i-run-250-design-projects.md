@@ -3,7 +3,7 @@ title: "How I run 250 design projects without losing the detail"
 subtitle: "A method note on coordinating a six-person design team — and the project management application I built when nothing else could give my leadership a straight answer."
 description: "A method note on coordinating a six-person design team across 250 active projects per year — and the project management application I built when no existing tool could give my leadership a straight answer."
 category: "method-notes"
-publishDate: 2026-05-16T11:00:00-03:00
+publishDate: 2026-05-12T11:00:00-03:00
 readingTime: 8
 tags:
   - method-notes

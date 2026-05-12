@@ -3,7 +3,7 @@ title: "Como gerencio 250 projetos de design sem perder o detalhe"
 subtitle: "Uma nota de método sobre coordenar uma equipe de seis pessoas — e o aplicativo de gestão que construí quando nenhuma outra ferramenta dava uma resposta direta para a minha diretoria."
 description: "Uma nota de método sobre coordenar uma equipe de seis pessoas em 250 projetos ativos por ano — e o aplicativo de gestão que construí quando nenhuma outra ferramenta dava uma resposta direta para a minha diretoria."
 category: "method-notes"
-publishDate: 2026-05-16T11:00:00-03:00
+publishDate: 2026-05-12T11:00:00-03:00
 readingTime: 8
 tags:
   - method-notes

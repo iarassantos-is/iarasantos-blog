@@ -3,7 +3,7 @@ title: "Why this journal exists"
 subtitle: "A working notebook on interiors, light, and the practice of building beautiful spaces — kept in public."
 description: "An introduction to IARA SANTOS — a writing practice on interior design, lighting, and project management."
 category: "method-notes"
-publishDate: 2026-05-05
+publishDate: 2026-04-21T10:00:00-03:00
 readingTime: 3
 tags:
   - design-process
