@@ -16,7 +16,16 @@ coverAlt: "Estudo de iluminação residencial — perfil linear LED oculto em pa
 draft: false
 translationSlug: "light-that-knows-what-to-do"
 ---
-
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:0 0 2.5rem;background:var(--sand);">
+     <iframe
+       src="https://player.vimeo.com/video/SEU_VIDEO_ID_AQUI?title=0&byline=0&portrait=0"
+       style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+       allow="autoplay; fullscreen; picture-in-picture"
+       allowfullscreen
+       title="Walkthrough do Dialux">
+     </iframe>
+   </div>
+   
 A luminária que você nota é a luminária que falhou.
 
 Boa parte do lighting residencial é julgada pelo que aparece no teto. A foto publicada de um pendente bonito. A imagem de catálogo de uma arandela arquitetônica. O que eu avalio, antes de tudo isso, é o que a luz *faz*. Para onde ela vai. Como cai nos materiais. Se o olho consegue ficar no ambiente por quatro horas sem se cansar em silêncio. A luminária é o meio. O meio existe para desaparecer.
@@ -81,4 +90,4 @@ Se o seu lighting designer não consegue te dizer qual é o UGR da luminária da
 
 ---
 
-O vídeo do walkthrough no Dialux deste projeto está em produção e será incorporado no topo deste post assim que gravado. Enquanto isso — se você tem um projeto residencial em que a iluminação não está se comportando como você gostaria, ou está começando uma reforma e quer um plano de iluminação desde o briefing, [me escreva](mailto:iarasantos.is@icloud.com).
+Se você tem um projeto residencial em que a iluminação não está se comportando como você gostaria, ou está começando uma reforma e quer um plano de iluminação desde o briefing, [me escreva](mailto:iarasantos.is@icloud.com).
