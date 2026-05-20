@@ -20,6 +20,14 @@ const portfolios = [
     href: 'https://canva.link/8072h9gwt7uoxbl',
     accent: 'cool',
   },
+  {
+    label: 'Project Management',
+    eyebrow: 'Process & delivery',
+    description:
+      'Methodology, tools, and case studies from coordinating 250+ active projects annually. ISSA Project workflow, milestone tracking, and cross-team communication — built for design studios at scale.',
+    href: 'https://canva.link/fxaailu5gomex4y',
+    accent: 'neutral',
+  },
 ];
 ---
 
@@ -67,10 +75,8 @@ const portfolios = [
     </div>
 
     <p class="portfolios-note">
-      A Project Management portfolio is in progress and will be added here
-      shortly. In the meantime, project management methodology is described
-      throughout the lighting portfolio's <em>Project Management at Scale</em>
-      section, and on my <a href="/about">About page</a>.
+      Three disciplines, one integrated practice. Each portfolio stands alone —
+      but the work is always connected.
     </p>
   </section>
 </BaseLayout>
@@ -123,6 +129,9 @@ const portfolios = [
   }
   .portfolio-card.accent-cool {
     background: linear-gradient(160deg, #F5F2ED 0%, #DDD5C7 100%);
+  }
+  .portfolio-card.accent-neutral {
+    background: linear-gradient(160deg, #EDE8E0 0%, #D6CCBC 100%);
   }
   .portfolio-card:hover {
     background: var(--ink);
