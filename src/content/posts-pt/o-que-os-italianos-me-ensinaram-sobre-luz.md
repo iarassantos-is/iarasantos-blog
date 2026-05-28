@@ -11,7 +11,7 @@ tags:
   - design-process
   - italian-design
   - public-speaking
-cover: "/images/posts/what-the-italians-taught-me-about-light-cover.jpg"
+cover: "/images/posts/what-the-italians-taught-me-about-light-cover.jpeg"
 coverAlt: "Iara Santos em palestra na PUC Minas Lourdes pelo Italian Design Day, abril de 2026."
 draft: false
 translationSlug: "what-the-italians-taught-me-about-light"
