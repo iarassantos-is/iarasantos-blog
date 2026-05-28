@@ -1,20 +1,20 @@
 ---
-// src/pages/contact.astro
-import BaseLayout from '../layouts/BaseLayout.astro';
+// src/pages/pt/contato.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Contact — Iara Santos"
-  description="Get in touch with Iara Santos, interior and lighting designer based in Belo Horizonte, open to remote work with US studios."
-  lang="en"
+  title="Contato — Iara Santos"
+  description="Entre em contato com Iara Santos, designer de interiores e iluminação baseada em Belo Horizonte, disponível para trabalho remoto."
+  lang="pt"
 >
   <main class="contact-page">
     <header class="contact-header">
-      <p class="contact-eyebrow">Contact</p>
-      <h1>Let's talk about your project.</h1>
+      <p class="contact-eyebrow">Contato</p>
+      <h1>Vamos conversar sobre o seu projeto.</h1>
       <p class="contact-intro">
-        Whether you're a studio exploring collaboration, a recruiter with a remote opportunity,
-        or a fellow designer who wants to exchange ideas — I'd like to hear from you.
+        Se você é um estúdio explorando colaboração, um recrutador com uma oportunidade remota,
+        ou um designer que quer trocar ideias — quero ouvir você.
       </p>
     </header>
 
@@ -28,7 +28,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           class="contact-form"
         >
           <div class="field">
-            <label for="name">Name</label>
+            <label for="name">Nome</label>
             <input type="text" id="name" name="name" required autocomplete="name" />
           </div>
 
@@ -38,16 +38,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <div class="field">
-            <label for="subject">Subject</label>
+            <label for="subject">Assunto</label>
             <input type="text" id="subject" name="subject" />
           </div>
 
           <div class="field">
-            <label for="message">Message</label>
+            <label for="message">Mensagem</label>
             <textarea id="message" name="message" rows="6" required></textarea>
           </div>
 
-          <button type="submit" class="submit-btn">Send message</button>
+          <button type="submit" class="submit-btn">Enviar mensagem</button>
         </form>
       </section>
 
@@ -91,13 +91,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div class="contact-block">
-          <p class="aside-label">Based in</p>
-          <p class="aside-text">Belo Horizonte, Brazil<br/>Open to remote · Relocation considered</p>
+          <p class="aside-label">Localização</p>
+          <p class="aside-text">Belo Horizonte, Brasil<br/>Disponível para remoto · Relocation possível</p>
         </div>
 
         <div class="contact-block">
-          <p class="aside-label">Response time</p>
-          <p class="aside-text">Within 48 hours on business days.</p>
+          <p class="aside-label">Tempo de resposta</p>
+          <p class="aside-text">Até 48 horas em dias úteis.</p>
         </div>
 
       </aside>
@@ -112,7 +112,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     padding: 4rem 2rem 6rem;
   }
 
-  /* Header */
   .contact-header {
     max-width: 600px;
     margin-bottom: 4rem;
@@ -142,7 +141,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin: 0;
   }
 
-  /* Grid */
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -157,7 +155,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
   }
 
-  /* Form */
   .contact-form {
     display: flex;
     flex-direction: column;
@@ -216,7 +213,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: var(--color-bone, #F5F2ED);
   }
 
-  /* Aside */
   .contact-aside {
     display: flex;
     flex-direction: column;
