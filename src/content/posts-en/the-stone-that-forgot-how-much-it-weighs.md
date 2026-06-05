@@ -4,7 +4,7 @@ subtitle: "Travertine came back as a trend, and the trend got it backwards."
 description: "Travertine came back as a trend, and the trend got it backwards. A note on weight, restraint, and the difference between using a stone and proving a point."
 category: "critical-eye"
 publishDate: 2026-06-05T10:00:00-03:00
-readingTime: "6 min read"
+readingTime: 6
 tags: ["critical-eye", "materiality", "travertine", "restraint", "high-end"]
 cover: "/images/posts/the-stone-that-forgot-how-much-it-weighs-cover.jpg"
 coverAlt: "A solid travertine block photographed from the side, its full thickness and vein-cut stratification visible in raking natural light."

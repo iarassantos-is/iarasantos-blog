@@ -4,7 +4,7 @@ subtitle: "O travertino voltou como tendência, e a tendência entendeu tudo ao 
 description: "O travertino voltou como tendência, e a tendência entendeu tudo ao contrário. Uma nota sobre peso, contenção, e o que é usar uma pedra sem provar nada."
 category: "critical-eye"
 publishDate: 2026-06-05T10:00:00-03:00
-readingTime: "6 min de leitura"
+readingTime: 6
 tags: ["critical-eye", "materialidade", "travertino", "contencao", "alto-padrao"]
 cover: "/images/posts/the-stone-that-forgot-how-much-it-weighs-cover.jpg"
 coverAlt: "Um bloco de travertino maciço fotografado de lado, com a espessura real e a estratificação do veio visíveis sob luz natural rasante."
