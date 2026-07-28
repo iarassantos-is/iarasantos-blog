@@ -5,9 +5,37 @@ export type PostEn = CollectionEntry<'posts-en'>;
 export type PostPt = CollectionEntry<'posts-pt'>;
 export type AnyPost = PostEn | PostPt;
 
+// ============================================================
+// AGENDAMENTO DE POSTS
+//
+// Um post só aparece no site quando as DUAS condições valem:
+//   1. draft: false            (não é rascunho)
+//   2. publishDate <= agora    (a data já chegou)
+//
+// Post com publishDate no futuro fica invisível: não aparece na
+// home, não aparece nas listagens, não gera a página /blog/slug
+// e não entra no RSS nem no sitemap.
+//
+// Quem faz o post entrar no ar na data marcada é o rebuild
+// automático (.github/workflows/scheduled-publish.yml).
+//
+// Em `npm run dev` (local) os posts agendados APARECEM, para você
+// conseguir revisar antes. No site publicado, não.
+// ============================================================
+
+const SHOW_SCHEDULED_POSTS = import.meta.env.DEV;
+
+export function isPublished(data: { draft: boolean; publishDate: Date }): boolean {
+  if (data.draft) return false;
+  if (SHOW_SCHEDULED_POSTS) return true;
+  // Comparação em milissegundos (UTC). Funciona mesmo com o build
+  // do Cloudflare rodando em UTC e a publishDate escrita em -03:00.
+  return data.publishDate.valueOf() <= Date.now();
+}
+
 export async function getPostsByLocale(locale: Locale): Promise<AnyPost[]> {
   const collection = locale === 'en' ? 'posts-en' : 'posts-pt';
-  const posts = await getCollection(collection, ({ data }) => !data.draft);
+  const posts = await getCollection(collection, ({ data }) => isPublished(data));
   return posts.sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 }
 

@@ -1,0 +1,50 @@
+# ============================================================
+# Publicação agendada de posts
+#
+# Roda de hora em hora. Verifica se algum post tem publishDate
+# que acabou de chegar. Se tiver, chama o Deploy Hook do
+# Cloudflare Pages, que refaz o build e coloca o post no ar.
+#
+# Se não tiver post para publicar, não faz nada — assim a cota
+# de 500 builds/mês do plano gratuito nunca é ameaçada.
+#
+# Também dá para disparar na mão: aba "Actions" no GitHub →
+# "Publicação agendada" → botão "Run workflow".
+# ============================================================
+
+name: Publicação agendada
+
+on:
+  schedule:
+    # Minuto 5 de cada hora (UTC). O minuto 0 é o horário mais
+    # congestionado do GitHub e costuma atrasar mais.
+    - cron: '5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Verificar se há post entrando no ar
+        id: check
+        run: node .github/scripts/check-scheduled.mjs
+
+      - name: Disparar build no Cloudflare Pages
+        if: steps.check.outputs.deploy == 'true' || github.event_name == 'workflow_dispatch'
+        run: |
+          if [ -z "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}" ]; then
+            echo "❌ O secret CLOUDFLARE_DEPLOY_HOOK não está configurado."
+            echo "   Veja o passo 2 do arquivo SETUP-2026-07-28.md."
+            exit 1
+          fi
+          echo "Chamando o Deploy Hook do Cloudflare..."
+          curl -fsS -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}"
+          echo ""
+          echo "✅ Build disparado. O post entra no ar em 1–2 minutos."
