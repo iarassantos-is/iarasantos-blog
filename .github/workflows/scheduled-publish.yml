@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Baixar o repositório
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Verificar se há post entrando no ar
         id: check
