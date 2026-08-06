@@ -1,0 +1,230 @@
+---
+import type { Locale } from '../i18n/ui';
+
+interface GalleryImage {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+
+interface Props {
+  locale: Locale;
+  images: GalleryImage[];
+  title?: string;
+}
+
+const { locale, images, title } = Astro.props;
+
+const label = title ?? (locale === 'pt' ? 'Galeria' : 'Gallery');
+const prevLabel = locale === 'pt' ? 'Imagem anterior' : 'Previous image';
+const nextLabel = locale === 'pt' ? 'Próxima imagem' : 'Next image';
+const total = String(images.length).padStart(2, '0');
+---
+
+<section class="post-gallery" data-gallery>
+  <div class="gallery-head post-wide">
+    <p class="eyebrow">{label}</p>
+    <p class="gallery-count meta" data-gallery-count>01 / {total}</p>
+  </div>
+
+  <div class="rail" data-rail tabindex="0">
+    {images.map((image) => (
+      <figure class="slide">
+        <img src={image.src} alt={image.alt ?? ''} loading="lazy" decoding="async" />
+        {image.caption && <figcaption>{image.caption}</figcaption>}
+      </figure>
+    ))}
+  </div>
+
+  <div class="rail-controls">
+    <div class="track"><span class="thumb" data-thumb></span></div>
+    <div class="arrows">
+      <button type="button" data-rail-prev aria-label={prevLabel}>
+        <svg viewBox="0 0 15 11" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+          <path d="M15 5.5H1M5.5 1 1 5.5 5.5 10" />
+        </svg>
+      </button>
+      <button type="button" data-rail-next aria-label={nextLabel}>
+        <svg viewBox="0 0 15 11" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+          <path d="M0 5.5h14M9.5 1 14 5.5 9.5 10" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .post-gallery {
+    /* alinha o começo do trilho com a coluna editorial e sangra pela direita */
+    --rail-inset: max(var(--gutter), calc((100% - 64rem) / 2 + var(--gutter)));
+    margin: clamp(3.5rem, 8vh, 5.5rem) 0 0;
+  }
+
+  .post-wide {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .gallery-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.4rem;
+  }
+  .gallery-head p { margin: 0; }
+  .gallery-count { color: var(--ink-muted); }
+
+  .rail {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 0 var(--gutter) 1.75rem var(--rail-inset);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+  }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .rail:focus-visible { outline: 2px solid var(--bronze); outline-offset: 4px; }
+
+  .slide {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    margin: 0;
+    max-width: 88vw;
+  }
+  .slide img {
+    height: clamp(280px, 62vh, 620px);
+    width: auto;
+    max-width: 88vw;
+    object-fit: cover;
+    margin: 0;
+  }
+  .slide figcaption {
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin-top: 0.75rem;
+    max-width: 34ch;
+  }
+
+  .rail-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: var(--rail-inset);
+    padding-right: var(--gutter);
+  }
+  .track {
+    position: relative;
+    flex: 1;
+    height: 1px;
+    background: var(--sand);
+  }
+  .thumb {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    height: 3px;
+    width: 25%;
+    background: var(--bronze);
+    transition: left 0.12s linear, width 0.12s linear;
+  }
+  .arrows { display: none; gap: 0.5rem; }
+  @media (min-width: 800px) {
+    .arrows { display: flex; }
+  }
+  .arrows button {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: 1px solid var(--sand);
+    border-radius: 50%;
+    color: var(--bronze);
+    transition: border-color 0.25s var(--ease-editorial), background 0.25s var(--ease-editorial);
+  }
+  .arrows button:hover { border-color: var(--bronze); background: var(--bone-warm); }
+  .arrows button:disabled { opacity: 0.3; cursor: default; }
+  .arrows svg { width: 15px; height: 11px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thumb { transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+    const rail = gallery.querySelector('[data-rail]') as HTMLElement | null;
+    const thumb = gallery.querySelector('[data-thumb]') as HTMLElement | null;
+    const counter = gallery.querySelector('[data-gallery-count]') as HTMLElement | null;
+    const prev = gallery.querySelector('[data-rail-prev]') as HTMLButtonElement | null;
+    const next = gallery.querySelector('[data-rail-next]') as HTMLButtonElement | null;
+    if (!rail) return;
+
+    const slides = Array.from(rail.querySelectorAll('.slide')) as HTMLElement[];
+    const pad = (n: number) => String(n).padStart(2, '0');
+
+    function sync() {
+      if (!rail) return;
+      const max = rail.scrollWidth - rail.clientWidth;
+      const ratio = Math.min(1, rail.clientWidth / rail.scrollWidth);
+      if (thumb) {
+        thumb.style.width = ratio * 100 + '%';
+        thumb.style.left = max > 0 ? (rail.scrollLeft / max) * (100 - ratio * 100) + '%' : '0%';
+      }
+      if (prev) prev.disabled = rail.scrollLeft < 4;
+      if (next) next.disabled = rail.scrollLeft > max - 4;
+      if (counter) {
+        let current = 0;
+        slides.forEach((slide, i) => {
+          if (slide.offsetLeft - rail.scrollLeft <= rail.clientWidth * 0.4) current = i;
+        });
+        counter.textContent = `${pad(current + 1)} / ${pad(slides.length)}`;
+      }
+    }
+
+    function step(direction: number) {
+      if (!rail) return;
+      const first = slides[0];
+      const width = first ? first.getBoundingClientRect().width + 20 : rail.clientWidth * 0.8;
+      rail.scrollBy({ left: direction * width, behavior: 'smooth' });
+    }
+
+    rail.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    prev?.addEventListener('click', () => step(-1));
+    next?.addEventListener('click', () => step(1));
+
+    // arrastar com o mouse; toque e trackpad já funcionam nativamente
+    let dragging = false;
+    let startX = 0;
+    let startLeft = 0;
+    rail.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'touch') return;
+      dragging = true;
+      startX = event.clientX;
+      startLeft = rail.scrollLeft;
+      rail.classList.add('is-dragging');
+      rail.setPointerCapture(event.pointerId);
+    });
+    rail.addEventListener('pointermove', (event) => {
+      if (dragging) rail.scrollLeft = startLeft - (event.clientX - startX);
+    });
+    ['pointerup', 'pointercancel'].forEach((type) =>
+      rail.addEventListener(type, () => {
+        dragging = false;
+        rail.classList.remove('is-dragging');
+      })
+    );
+
+    // as imagens são lazy: recalcula quando cada uma entra
+    rail.querySelectorAll('img').forEach((img) => img.addEventListener('load', sync));
+    sync();
+  });
+</script>

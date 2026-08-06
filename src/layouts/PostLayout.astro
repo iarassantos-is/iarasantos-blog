@@ -1,24 +1,40 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import PostGallery from '../components/PostGallery.astro';
+import PostCredits from '../components/PostCredits.astro';
+import type { CollectionEntry } from 'astro:content';
 import type { Locale } from '../i18n/ui';
 import { t } from '../i18n/ui';
 import { formatDate, localizePath } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
-  title: string;
-  subtitle?: string;
-  description: string;
-  category: 'project-showcase' | 'critical-eye' | 'method-notes' | 'material-studies' | 'curated';
-  publishDate: Date;
-  readingTime: number;
-  tags: string[];
-  cover?: string;
-  coverAlt?: string;
+  post: CollectionEntry<'posts-en'> | CollectionEntry<'posts-pt'>;
 }
 
-const { locale, title, subtitle, description, category, publishDate, readingTime, tags, cover, coverAlt } = Astro.props;
+const { locale, post } = Astro.props;
+const {
+  title,
+  subtitle,
+  description,
+  category,
+  publishDate,
+  readingTime,
+  tags,
+  cover,
+  coverAlt,
+  heroStyle = 'overlay',
+  coverFocus = 'center',
+  gallery = [],
+  galleryTitle,
+  credits = [],
+} = post.data;
+
 const catKey = `cat.${category}` as const;
+
+// Sem capa, o hero vira puramente tipográfico — nada quebra em posts antigos.
+const heroMode = cover ? heroStyle : 'plain';
+const invertHeader = Boolean(cover);
 ---
 
 <BaseLayout
@@ -26,31 +42,54 @@ const catKey = `cat.${category}` as const;
   title={title}
   description={description}
   ogImage={cover}
+  postPage={true}
+  heroInvert={invertHeader}
 >
   <article class="post">
-    <!-- Hero -->
-    <header class="post-hero container">
-      <div class="post-hero-meta">
-        <span class="eyebrow">{t(locale, catKey)}</span>
-        <span class="dot" aria-hidden="true">·</span>
-        <span class="meta">{formatDate(publishDate, locale)}</span>
-        <span class="dot" aria-hidden="true">·</span>
-        <span class="meta">{readingTime} {t(locale, 'post.minRead')}</span>
-      </div>
-      <h1 class="display post-title">{title}</h1>
-      {subtitle && <p class="post-subtitle">{subtitle}</p>}
-      <p class="post-byline">{t(locale, 'post.byline')}</p>
-    </header>
+    <!-- Hero de fora a fora -->
+    <header
+      class:list={['post-hero', `is-${heroMode}`]}
+      data-post-hero={invertHeader ? 'invert' : undefined}
+    >
+      {cover && (
+        <div class="hero-media">
+          <img
+            src={cover}
+            alt={coverAlt ?? ''}
+            style={`object-position: ${coverFocus};`}
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <div class="hero-scrim" aria-hidden="true"></div>
+        </div>
+      )}
 
-    {cover && (
-      <figure class="post-cover container">
-        <img src={cover} alt={coverAlt ?? ''} />
-      </figure>
-    )}
+      <div class="hero-text">
+        <div class="hero-inner">
+          <p class="post-hero-meta">
+            <span class="eyebrow">{t(locale, catKey)}</span>
+            <span class="rule" aria-hidden="true"></span>
+            <span class="meta">{formatDate(publishDate, locale)}</span>
+            <span class="rule" aria-hidden="true"></span>
+            <span class="meta">{readingTime} {t(locale, 'post.minRead')}</span>
+          </p>
+          <h1 class="display post-title">{title}</h1>
+          {subtitle && <p class="post-subtitle">{subtitle}</p>}
+          <p class="post-byline">{t(locale, 'post.byline')}</p>
+        </div>
+      </div>
+    </header>
 
     <div class="prose-container prose">
       <slot />
     </div>
+
+    {gallery.length > 0 && (
+      <PostGallery locale={locale} images={gallery} title={galleryTitle} />
+    )}
+
+    {credits.length > 0 && <PostCredits locale={locale} items={credits} />}
 
     <!-- Tags -->
     {tags && tags.length > 0 && (
@@ -65,55 +104,116 @@ const catKey = `cat.${category}` as const;
         </ul>
       </div>
     )}
+
+    <!-- Related posts, enviados pela página do post -->
+    <slot name="footer" />
   </article>
 </BaseLayout>
 
 <style>
-  .post { padding: 4rem 0 5rem; }
+  .post { padding: 0 0 5rem; }
 
+  /* ============================================================
+     HERO — capa de fora a fora
+     ============================================================ */
   .post-hero {
-    text-align: left;
-    max-width: 50rem;
-    margin: 0 auto 2.5rem;
+    position: relative;
+    width: 100%;
   }
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-scrim { position: absolute; inset: 0; }
+
+  .hero-inner {
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
   .post-hero-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.85rem;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin: 0 0 1.5rem;
   }
-  .dot { color: var(--sand); font-size: 0.7rem; }
-
-  .post-title {
-    margin: 0 0 1.25rem;
+  .post-hero-meta .rule {
+    width: 14px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.45;
   }
+  .post-title { margin: 0; max-width: 20ch; }
   .post-subtitle {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: clamp(1.1rem, 1vw + 0.8rem, 1.5rem);
     line-height: 1.4;
-    color: var(--ink-soft);
-    margin: 0 0 2rem;
-    max-width: 36rem;
+    margin: 1.25rem 0 0;
+    max-width: 40ch;
   }
   .post-byline {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 0.06em;
-    color: var(--ink-muted);
     text-transform: uppercase;
-    margin: 0;
+    margin: 1.75rem 0 0;
+    opacity: 0.75;
   }
 
-  .post-cover {
-    margin: 0 auto 3.5rem;
-    max-width: 60rem;
+  /* ----- variante A: título sobre a capa (padrão) ----- */
+  .post-hero.is-overlay {
+    min-height: min(84vh, 820px);
+    display: flex;
+    align-items: flex-end;
   }
-  .post-cover img {
+  .post-hero.is-overlay .hero-media { position: absolute; inset: 0; overflow: hidden; }
+  .post-hero.is-overlay .hero-scrim {
+    background: linear-gradient(
+      to top,
+      rgba(26, 24, 21, 0.80) 0%,
+      rgba(26, 24, 21, 0.45) 36%,
+      rgba(26, 24, 21, 0.10) 70%,
+      rgba(26, 24, 21, 0.30) 100%
+    );
+  }
+  .post-hero.is-overlay .hero-text {
+    position: relative;
+    z-index: 2;
     width: 100%;
-    height: auto;
+    padding: 9rem 0 clamp(3rem, 7vh, 5rem);
+    color: var(--bone);
   }
+  .post-hero.is-overlay .post-title { color: var(--bone); }
+  .post-hero.is-overlay .eyebrow { color: var(--sand); }
+  .post-hero.is-overlay .meta { color: rgba(245, 242, 237, 0.72); }
+  .post-hero.is-overlay .post-subtitle { color: rgba(245, 242, 237, 0.85); }
+  .post-hero.is-overlay .post-byline { color: rgba(245, 242, 237, 0.6); }
 
+  /* ----- variante B: capa limpa, título abaixo ----- */
+  .post-hero.is-below .hero-media {
+    position: relative;
+    height: min(66vh, 660px);
+    overflow: hidden;
+  }
+  .post-hero.is-below .hero-scrim {
+    background: linear-gradient(to bottom, rgba(26, 24, 21, 0.28), rgba(26, 24, 21, 0) 45%);
+  }
+  .post-hero.is-below .hero-text { padding: clamp(2.5rem, 6vh, 4rem) 0 0; }
+
+  /* ----- variante C: sem capa, hero tipográfico ----- */
+  .post-hero.is-plain .hero-text { padding: clamp(7rem, 14vh, 10rem) 0 0; }
+
+  /* Espaço entre o hero e o corpo do texto */
+  .post-hero + .prose-container { margin-top: clamp(3rem, 7vh, 4.5rem); }
+
+  /* ============================================================
+     Tags
+     ============================================================ */
   .post-tags {
     margin-top: 4rem;
     padding-top: 2rem;
@@ -128,3 +228,20 @@ const catKey = `cat.${category}` as const;
     gap: 0.5rem;
   }
 </style>
+
+<script>
+  // Enquanto a capa está na tela, o header fica transparente e claro.
+  // Assim que ela sai, volta ao bone com blur.
+  const hero = document.querySelector('[data-post-hero="invert"]');
+
+  if (hero && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const stillOnCover = entry.isIntersecting && entry.intersectionRatio > 0.1;
+        document.body.classList.toggle('hero-passed', !stillOnCover);
+      },
+      { threshold: [0, 0.1, 0.5] }
+    );
+    observer.observe(hero);
+  }
+</script>

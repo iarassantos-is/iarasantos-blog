@@ -220,6 +220,87 @@ const navItems = [
     color: var(--ink-muted);
     text-decoration: none;
   }
+
+  /* ============================================================
+     Páginas de post — header sobre a capa de fora a fora
+     ============================================================ */
+  .site-header,
+  .brand-name,
+  .brand-tagline,
+  .nav-link,
+  .lang-current,
+  .lang-other,
+  .lang-divider,
+  .menu-toggle span {
+    transition:
+      color 0.4s var(--ease-editorial),
+      background 0.4s var(--ease-editorial),
+      border-color 0.4s var(--ease-editorial);
+  }
+
+  /* fixed em vez de sticky: a capa começa no topo absoluto da página */
+  :global(body.post-page) .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* estado claro, enquanto a capa está na tela */
+  :global(body.hero-invert:not(.hero-passed)) .site-header {
+    background: transparent;
+    border-bottom-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  :global(body.hero-invert:not(.hero-passed)) .brand-name,
+  :global(body.hero-invert:not(.hero-passed)) .nav-link,
+  :global(body.hero-invert:not(.hero-passed)) .lang-current {
+    color: var(--bone);
+  }
+  :global(body.hero-invert:not(.hero-passed)) .brand-tagline,
+  :global(body.hero-invert:not(.hero-passed)) .lang-other {
+    color: rgba(245, 242, 237, 0.7);
+  }
+  :global(body.hero-invert:not(.hero-passed)) .lang-divider {
+    color: rgba(245, 242, 237, 0.45);
+  }
+  :global(body.hero-invert:not(.hero-passed)) .nav-link:hover,
+  :global(body.hero-invert:not(.hero-passed)) .nav-link.active {
+    color: var(--bone);
+  }
+  :global(body.hero-invert:not(.hero-passed)) .nav-link.active::after {
+    background: var(--sand);
+  }
+  :global(body.hero-invert:not(.hero-passed)) .menu-toggle span {
+    background: var(--bone);
+  }
+
+  /* com o menu mobile aberto o fundo volta, senão os links somem na imagem */
+  :global(body.hero-invert.menu-open:not(.hero-passed)) .site-header {
+    background: rgba(245, 242, 237, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom-color: var(--rule);
+  }
+  :global(body.hero-invert.menu-open:not(.hero-passed)) .brand-name,
+  :global(body.hero-invert.menu-open:not(.hero-passed)) .lang-current {
+    color: var(--ink);
+  }
+  :global(body.hero-invert.menu-open:not(.hero-passed)) .brand-tagline,
+  :global(body.hero-invert.menu-open:not(.hero-passed)) .lang-other {
+    color: var(--ink-muted);
+  }
+  :global(body.hero-invert.menu-open:not(.hero-passed)) .menu-toggle span {
+    background: var(--ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-header,
+    .brand-name,
+    .nav-link,
+    .menu-toggle span { transition: none; }
+  }
 </style>
 
 <script>
@@ -228,5 +309,6 @@ const navItems = [
   toggle?.addEventListener('click', () => {
     const isOpen = mobileNav?.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(!!isOpen));
+    document.body.classList.toggle('menu-open', !!isOpen);
   });
 </script>

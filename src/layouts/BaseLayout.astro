@@ -9,9 +9,24 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  /** true nas páginas de post: header vira fixed e a capa sobe até o topo */
+  postPage?: boolean;
+  /** true quando o post tem capa: header nasce claro sobre a imagem */
+  heroInvert?: boolean;
 }
 
-const { locale, title, description, ogImage = '/images/og-default.jpg' } = Astro.props;
+const {
+  locale,
+  title,
+  description,
+  ogImage = '/images/og-default.jpg',
+  postPage = false,
+  heroInvert = false,
+} = Astro.props;
+
+const bodyClass = [postPage && 'post-page', heroInvert && 'hero-invert']
+  .filter(Boolean)
+  .join(' ');
 
 const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
@@ -59,7 +74,7 @@ const cleanPath = stripPt(Astro.url.pathname);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
 
@@ -67,7 +82,7 @@ const cleanPath = stripPt(Astro.url.pathname);
     <link rel="alternate" type="application/rss+xml" title="Iara Santos — RSS" href="/rss.xml" />
   </head>
 
-  <body>
+  <body class={bodyClass || undefined}>
     <a href="#main" class="skip-link">Skip to content</a>
     <Header locale={locale} currentPath={Astro.url.pathname} />
     <main id="main">

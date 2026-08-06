@@ -18,22 +18,11 @@ const related = getRelatedPosts(post, allPosts, 2);
 const locale = 'pt' as const;
 ---
 
-<PostLayout
-  locale={locale}
-  title={post.data.title}
-  subtitle={post.data.subtitle}
-  description={post.data.description}
-  category={post.data.category}
-  publishDate={post.data.publishDate}
-  readingTime={post.data.readingTime}
-  tags={post.data.tags}
-  cover={post.data.cover}
-  coverAlt={post.data.coverAlt}
->
+<PostLayout locale={locale} post={post}>
   <Content />
 
   {related.length > 0 && (
-    <section class="related container">
+    <section slot="footer" class="related container">
       <p class="eyebrow">{t(locale, 'post.related')}</p>
       <ul class="related-list">
         {related.map((rel) => (
@@ -54,7 +43,7 @@ const locale = 'pt' as const;
     margin-top: 5rem;
     padding-top: 3rem;
     border-top: 1px solid var(--rule);
-    max-width: 60rem;
+    max-width: 64rem;
   }
   .related .eyebrow { margin-bottom: 2rem; }
   .related-list {
